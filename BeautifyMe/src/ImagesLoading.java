@@ -15,7 +15,7 @@ class imageLoad extends Canvas {
 
 	public void paint(Graphics g) {
 		if (img != null) {
-			g.drawImage(img, 100, 100, 400, 400, this);
+			g.drawImage(img, 0, 0, this);
 		}
 	}
 
@@ -25,7 +25,8 @@ class imageLoad extends Canvas {
 }
 
 public class ImagesLoading implements ActionListener {
-	JFrame fr = new JFrame("Image loading program Using awt");
+	
+	JFrame fr = new JFrame("Image loading");
 	Label Label1 = new Label("Choose your image");
 	Button Button1 = new Button("select");
 	Image Image1;
@@ -67,8 +68,4 @@ public class ImagesLoading implements ActionListener {
 		}
 	}
 
-	public static void main(String args[]) {
-		ImagesLoading a = new ImagesLoading();
-		a.initialize();
-	}
 }
