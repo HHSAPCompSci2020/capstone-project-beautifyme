@@ -1,36 +1,22 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import javax.swing.*;
-import java.awt.Frame;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.FileDialog;
+import java.awt.FlowLayout;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-class imageLoad extends Canvas {
-	Image img;
+import javax.swing.JFrame;
 
-	public imageLoad(Image img) {
-		this.img = img;
-	}
-
-	public void paint(Graphics g) {
-		if (img != null) {
-			g.drawImage(img, 0, 0, this);
-		}
-	}
-
-	public void setImage(Image img) {
-		this.img = img;
-	}
-}
-
-public class ImagesLoading implements ActionListener {
+public class ImageLoading implements ActionListener {
 	
 	JFrame fr = new JFrame("Image loading");
 	Label Label1 = new Label("Choose your image");
 	Button Button1 = new Button("select");
 	Image Image1;
-	imageLoad Canvas1;
+	ImageGetter Canvas1;
 	FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 
 	void initialize() {
@@ -42,13 +28,13 @@ public class ImagesLoading implements ActionListener {
 		fr.add(Button1);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Button1.addActionListener(this);
-		Canvas1 = new imageLoad(null);
+		Canvas1 = new ImageGetter(null);
 		Canvas1.setSize(1000, 1000);
 		fr.add(Canvas1);
 		fr.show();
 	}
 
-	void imageload() {
+	public void imageload() {
 		fd.show();
 		if (fd.getFile() == null) {
 			Label1.setText("You have not select");
@@ -67,5 +53,4 @@ public class ImagesLoading implements ActionListener {
 			imageload();
 		}
 	}
-
 }
