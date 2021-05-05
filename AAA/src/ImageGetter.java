@@ -2,6 +2,9 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
 
+//wait what if we combined photograph and imageGetter into one 
+//class since Image getter is pretty much creating the image just like Photograph is
+
 public class ImageGetter extends Canvas {
 	Image img;
 
