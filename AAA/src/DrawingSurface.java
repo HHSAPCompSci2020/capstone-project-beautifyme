@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 
 public class DrawingSurface implements ActionListener {
 	
-	JFrame fr = new JFrame("Image loading");
+	JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
 	Label Label1 = new Label("Choose your image");
 	Button Button1 = new Button("select");
 	Image Image1;

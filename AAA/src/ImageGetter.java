@@ -11,7 +11,7 @@ public class ImageGetter extends Canvas {
 
 	public void paint(Graphics g) {
 		if (img != null) {
-			g.drawImage(img, 100, 100, this);
+			g.drawImage(img, 100, 100, 640, 320, this);
 		}
 	}
 

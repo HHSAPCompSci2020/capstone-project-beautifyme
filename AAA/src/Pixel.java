@@ -11,14 +11,19 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 class Pixel {
-	BufferedImage image;
+	BufferedImage image; //get rid of this because not object oriented to have image
 	int width;
 	int height;
+<<<<<<< HEAD
 	
+=======
+	//create int r, int g, int b that will save the get stuff
+
+>>>>>>> c42eca78d7a5a0ea45f4d76fdc2ef6b32c701763
 	public Pixel() {
 		try {
 			File input = new File("blackandwhite.jpg");
-			image = ImageIO.read(input);
+			image = ImageIO.read(input); //make this image local 
 			width = image.getWidth();
 			height = image.getHeight();
 
@@ -31,7 +36,7 @@ class Pixel {
 					count++;
 					Color c = new Color(image.getRGB(j, i));
 					System.out.println("S.No: " + count + " Red: " + c.getRed() + "  Green: " + c.getGreen() + " Blue: "
-							+ c.getBlue());
+							+ c.getBlue()); //save the rgb stuff
 				}
 			}
 
@@ -40,6 +45,6 @@ class Pixel {
 	}
 
 	static public void main(String args[]) throws Exception {
-		Pixel obj = new Pixel();
+		Pixel obj = new Pixel(); //get rid of main and make pixel in image 
 	}
 }
