@@ -1,6 +1,7 @@
+
 /**
- * the author of this code is java dip
- * this code gets the pixel rgb values of a given image
+ * the author of this code was java dip but modifications were
+ *  made to fit prompt by Mana Nagampalli
  * */
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,19 +12,15 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 class Pixel {
-	BufferedImage image; //get rid of this because not object oriented to have image
+	BufferedImage image; // get rid of this because not object oriented to have image
 	int width;
 	int height;
-<<<<<<< HEAD
-	
-=======
-	//create int r, int g, int b that will save the get stuff
+	Color[][] color = new Color[][]''
 
->>>>>>> c42eca78d7a5a0ea45f4d76fdc2ef6b32c701763
 	public Pixel() {
 		try {
 			File input = new File("blackandwhite.jpg");
-			image = ImageIO.read(input); //make this image local 
+			image = ImageIO.read(input); // make this image local
 			width = image.getWidth();
 			height = image.getHeight();
 
@@ -34,9 +31,7 @@ class Pixel {
 				for (int j = 0; j < width; j++) {
 
 					count++;
-					Color c = new Color(image.getRGB(j, i));
-					System.out.println("S.No: " + count + " Red: " + c.getRed() + "  Green: " + c.getGreen() + " Blue: "
-							+ c.getBlue()); //save the rgb stuff
+					color[j][i] = new Color(image.getRGB(j, i));
 				}
 			}
 
@@ -45,6 +40,6 @@ class Pixel {
 	}
 
 	static public void main(String args[]) throws Exception {
-		Pixel obj = new Pixel(); //get rid of main and make pixel in image 
+		Pixel obj = new Pixel(); // get rid of main and make pixel in image
 	}
 }
