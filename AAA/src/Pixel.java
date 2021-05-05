@@ -12,15 +12,17 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 class Pixel {
-	BufferedImage image; // get rid of this because not object oriented to have image
-	int width;
-	int height;
-	Color[][] color = new Color[][]''
+	private int width; 
+	private int height; 
+	Color[][] color = new Color[][];
 
-	public Pixel() {
+	public Pixel(Photograph p) {
+		
 		try {
-			File input = new File("blackandwhite.jpg");
-			image = ImageIO.read(input); // make this image local
+			File input = new File("blackandwhite.jpg"); //change this blackandwhite to p.getImage()
+			BufferedImage image = ImageIO.read(input); // make this image local 
+			//maybe make the try and catch thing in Photograph so then the image gets saved there and then just pass
+			//in Photograph to the constructor so then it can save all the values in Pixel like that
 			width = image.getWidth();
 			height = image.getHeight();
 
@@ -38,7 +40,12 @@ class Pixel {
 		} catch (Exception e) {
 		}
 	}
-
+	public Color getColor(int x, int y) {
+		return color[y][x];
+	}
+	public void setColor(int x, int y, Color c) {
+		color[y][x] = c;
+	}
 	static public void main(String args[]) throws Exception {
 		Pixel obj = new Pixel(); // get rid of main and make pixel in image
 	}
