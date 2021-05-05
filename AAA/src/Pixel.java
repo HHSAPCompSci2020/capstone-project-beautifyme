@@ -14,7 +14,7 @@ class Pixel {
 	BufferedImage image;
 	int width;
 	int height;
-
+	
 	public Pixel() {
 		try {
 			File input = new File("blackandwhite.jpg");
