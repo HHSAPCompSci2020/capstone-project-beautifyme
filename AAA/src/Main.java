@@ -13,7 +13,6 @@ import javax.swing.JFrame;
 public class Main {
 
 	public static void main(String args[]) {
-		ImageLoading a = new ImageLoading();
-		a.initialize();
+		DrawingSurface a = new DrawingSurface();
 	}
 }
