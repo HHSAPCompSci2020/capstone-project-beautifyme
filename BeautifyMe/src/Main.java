@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * This class represents the main method that will run the DrawingSurface.
  * @author Sarah Sabaa
@@ -6,6 +7,9 @@
  */
 
 import java.awt.Button;
+=======
+import java.awt.Button;	
+>>>>>>> 274027654fa2ad3548f90478999adef4527dd9bd
 import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
