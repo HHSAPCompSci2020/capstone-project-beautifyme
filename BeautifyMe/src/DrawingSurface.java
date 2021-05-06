@@ -25,7 +25,7 @@ public class DrawingSurface implements ActionListener {
 	FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 
 	/**
-	 *Initializes a Drawing Surface with a 500 by 500 size and creates 2 buttons and an image
+	 *Initializes a Drawing Surface with a 500 by 500 size and creates a button and an image
 	 */
 	public DrawingSurface() {
 		fr.setSize(500, 500);
@@ -59,7 +59,7 @@ public class DrawingSurface implements ActionListener {
 	}
 	
 	/**
-	 *Performs an action when the button is pushed 
+	 *Loads the image when the button is pushed 
 	 *@param event An event that has happened when the button is pressed  
 	 */
 	public void actionPerformed(ActionEvent event) {
