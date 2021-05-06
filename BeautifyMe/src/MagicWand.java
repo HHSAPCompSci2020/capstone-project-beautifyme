@@ -1,0 +1,3 @@
+Class MagicWand extend Pixel{
+	
+}

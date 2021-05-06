@@ -7,7 +7,6 @@ import java.awt.Label;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
@@ -16,6 +15,8 @@ public class DrawingSurface implements ActionListener {
 	JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
 	Label Label1 = new Label("Choose your image");
 	Button Button1 = new Button("select");
+	//Image Image1;
+	//ImageGetter Canvas1;
 	BufferedImage Image1;
 	Photograph Canvas1;
 	FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
@@ -29,6 +30,7 @@ public class DrawingSurface implements ActionListener {
 		fr.add(Button1);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Button1.addActionListener(this);
+		//Canvas1 = new ImageGetter(null);
 		Canvas1 = new Photograph(null);
 		Canvas1.setSize(1000, 1000);
 		fr.add(Canvas1);
