@@ -10,11 +10,12 @@ import java.io.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import java.awt.Color;
 
 class Pixel {
 	private int width; 
 	private int height; 
-	Color[][] color = new Color[][];
+	Color[][] color;
 
 	public Pixel(Photograph p) {
 		
@@ -25,9 +26,8 @@ class Pixel {
 			//in Photograph to the constructor so then it can save all the values in Pixel like that
 			width = image.getWidth();
 			height = image.getHeight();
-
+			color  = new Color[width][height];
 			int count = 0;
-
 			for (int i = 0; i < height; i++) {
 
 				for (int j = 0; j < width; j++) {
@@ -45,8 +45,5 @@ class Pixel {
 	}
 	public void setColor(int x, int y, Color c) {
 		color[y][x] = c;
-	}
-	static public void main(String args[]) throws Exception {
-		Pixel obj = new Pixel(); // get rid of main and make pixel in image
 	}
 }

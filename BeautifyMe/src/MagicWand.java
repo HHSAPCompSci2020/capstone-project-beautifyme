@@ -1,3 +1,4 @@
-Class MagicWand extend Pixel{
+public class MagicWand{
+	public MagicWand() {}
 	
 }

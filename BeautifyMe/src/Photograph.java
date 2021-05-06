@@ -1,26 +1,22 @@
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.Color;
 
 public class Photograph extends Canvas {
 	Pixel pixels;
 	int width;
 	int height;
-	BufferedImage image;
+	Image image;
 	
 	public Photograph(BufferedImage image){
 		this.image = image;
+		if(image !=null) {
 		this.width = image.getWidth();
 		this.height = image.getHeight();
-		/*
-		try {
-			File input = new File(image); 
-			this.image = ImageIO.read(input); 
-			this.width = image.getWidth();
-			this.height = image.getHeight();
 		}
-		catch (Exception e) {
-		} */
 		pixels = new Pixel(this);
 	}
 	public void paint(Graphics g) {
@@ -29,11 +25,11 @@ public class Photograph extends Canvas {
 		}
 	}
 
-	public void setImage(BufferedImage img) {
+	public void setImage(Image img) {
 		this.image = image;
 	}
 
-	public BufferedImage getImage() {
+	public Image getImage() {
 		return image;
 	}
 
@@ -42,7 +38,7 @@ public class Photograph extends Canvas {
 	}
 	
 	public void setColor(int x, int y, Color c) {
-		return pixels.setColor(x,y,c);
+		pixels.setColor(x,y,c);
 	}
 	
 }
