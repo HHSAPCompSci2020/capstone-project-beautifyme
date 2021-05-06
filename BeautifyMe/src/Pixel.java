@@ -25,8 +25,8 @@ class Pixel {
 	 */
 	public Pixel(Photograph p) {
 		if(p.getImage() != null) {
-			width = p.width;
-			height = p.height;
+			width = p.getWidth();
+			height = p.getHeight();
 			color  = new Color[width][height];
 			BufferedImage image = (BufferedImage)p.getImage();
 			for (int i = 0; i < height; i++) {

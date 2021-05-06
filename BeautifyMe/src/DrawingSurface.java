@@ -17,19 +17,21 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 public class DrawingSurface implements ActionListener {
-	JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
-	Label Label1 = new Label("Choose your image");
-	Button Button1 = new Button("select");
-	Image Image1;
-	Photograph Canvas1;
-	FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+	public final int WIDTH = 800;
+	public final int HEIGHT = 800;
+	private JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
+	private Label Label1 = new Label("Choose your image");
+	private Button Button1 = new Button("select");
+	private Image Image1;
+	private Photograph Canvas1;
+	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates a button and an image
 	 */
 	public DrawingSurface() {
-		fr.setSize(500, 500);
-		fr.setLocation(200, 200);
+		fr.setSize(WIDTH, HEIGHT);
+		fr.setLocation(50, 50);
 		fr.setBackground(Color.lightGray);
 		fr.setLayout(new FlowLayout());
 		fr.add(Label1);
@@ -37,7 +39,7 @@ public class DrawingSurface implements ActionListener {
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Button1.addActionListener(this);
 		Canvas1 = new Photograph(null);
-		Canvas1.setSize(1000, 1000);
+		Canvas1.setSize(WIDTH, HEIGHT);
 		fr.add(Canvas1);
 		fr.show();
 	}
