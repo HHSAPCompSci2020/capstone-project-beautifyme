@@ -30,8 +30,8 @@ public class Photograph extends Canvas {
 	public Photograph(BufferedImage image){
 		this.image = image;
 		if(image !=null) {
-		this.width = image.getWidth();
-		this.height = image.getHeight();
+			this.width = image.getWidth();
+			this.height = image.getHeight();
 		}
 		pixels = new Pixel(this);
 	}
