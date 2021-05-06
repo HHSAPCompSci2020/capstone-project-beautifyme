@@ -54,7 +54,7 @@ public class Photograph extends Canvas {
 	 *@param image a Image that will be the new image
 	 */
 	public void setImage(Image img) {
-		this.image = image;
+		this.image = img;
 	}
 	
 	/**
