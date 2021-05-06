@@ -66,15 +66,5 @@ Credits:
    * DrawingSurface (main focus)
    * Main
 * External Credits:
-   * Upload Image into Java Program Guide 
-   * How to Get Pixel Array from Image
-   * BufferedImage Class
-   * Editing Pixel Values
-   * How to Drag Image into Java Program
-   * Changing Saturation of Image
-   * Similar Program Description to Ours 
-   * Loading Image into Program
-   * Image Editor
-   * Swing Tutorials 
-   * For drag and drop you can try java.awt.datatransfer API. For scaling the images try java.awt.Image method getScaledInstance(int width, int height, int hints) and other related api.
-   * java.awt.image.PixelGrabber. Then it all gets down to doing the "math" on the pixels to do the effect you want.
+   *Pixel- JavaDip for the Pixel class try and catch part
+   *C# Corner - How to Upload Images in Java Applications 

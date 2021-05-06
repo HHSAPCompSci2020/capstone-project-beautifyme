@@ -22,7 +22,7 @@ import javax.swing.JFrame;
 public class Main {
 	/**
 	 *Creates the drawing surface and runs the whole program
-	 *@param String args[] String
+	 *@param args[] String with arguments
 	 */
 	public static void main(String args[]) {
 		DrawingSurface a = new DrawingSurface();
