@@ -1,3 +1,10 @@
+/**
+ * This class represents the main method that will run the DrawingSurface.
+ * @author Sarah Sabaa
+ * @version 1.0 on 5/6
+ * @since 1.0 
+ */
+
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.FileDialog;
@@ -10,8 +17,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-public class Main {
 
+
+public class Main {
+	/**
+	 *Creates the drawing surface and runs the whole program
+	 *@param String args[] String
+	 */
 	public static void main(String args[]) {
 		DrawingSurface a = new DrawingSurface();
 	}
