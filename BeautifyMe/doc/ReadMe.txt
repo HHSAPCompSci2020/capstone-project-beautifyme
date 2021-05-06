@@ -67,4 +67,4 @@ Credits:
    * Main
 * External Credits:
    *Pixel- JavaDip for the Pixel class try and catch part
-   *DrawingSurface (imageload method)- 
+   *C# Corner - How to Upload Images in Java Applications 
