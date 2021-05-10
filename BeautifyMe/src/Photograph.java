@@ -78,7 +78,19 @@ public class Photograph extends Canvas {
 		this.height = image.getHeight();
 		System.out.println(width);
 		scale();
+		grid = new Pixel[height][width];
 	}
+	
+	public void setsColorForPixels() {
+		if(image != null) {
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
+					grid[j][i] = new Pixel(new Color(p.getImage().getRGB(j, i));
+				}
+			}
+
+	}
+	
 	
 	/**
 	 *Gets the image being used as the Photograph

@@ -74,7 +74,9 @@ public class DrawingSurface extends PApplet implements ActionListener{
 	 *@param event An event that has happened when the button is pressed  
 	 */
 	public void mousePressed() {
-		if (mouseButton == LEFT) {
+		
+		if (mouseButton == LEFT) { 
+			//and you pressed within the photo do all this!!! if not just have normal press
 			Point click = new Point(mouseX,mouseY);
 			float dimension = height;
 			Point cellCoord = board.clickToIndex(click,0,0,dimension,dimension);
