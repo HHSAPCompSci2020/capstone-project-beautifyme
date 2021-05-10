@@ -17,6 +17,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+
 import processing.core.PApplet;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -53,17 +55,16 @@ public class DrawingSurface extends PApplet implements ActionListener{
 	
 	/**
 	 *Loads an image to the Drawing Surface
+	 * @throws IOException 
 	 */
-	public void imageload() {
+	public void imageload() throws IOException {
 	
 		fd.show();
 		if (fd.getFile() == null) {
 			Label1.setText("You have not selected");
 		} else{
-			String d = (fd.getDirectory() + fd.getFile());
-			Toolkit toolkit = Toolkit.getDefaultToolkit();
-			Image1 = toolkit.getImage(d);
-			//ImageIO.read() - need to get a File from fd s
+			File[] file = fd.getFiles();
+			Image1 = ImageIO.read(file[0]);
 			Canvas1.setImage(Image1);
 			Canvas1.repaint();
 		}
@@ -93,7 +94,12 @@ public class DrawingSurface extends PApplet implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 		Button b = (Button) event.getSource();
 		if (b == Button1) {
-			imageload();
+			try {
+				imageload();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }
