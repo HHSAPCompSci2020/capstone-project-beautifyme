@@ -88,7 +88,7 @@ public class Photograph extends Canvas {
 					grid[j][i] = new Pixel(new Color(p.getImage().getRGB(j, i));
 				}
 			}
-
+		}
 	}
 	
 	
