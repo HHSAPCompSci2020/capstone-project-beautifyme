@@ -107,7 +107,7 @@ public class Photograph extends Canvas {
 	 *@return Color color of the pixel at the location (x,y)  
 	 */
 	public Color getColor(int x, int y) {
-		return grid[y][x].getColor();
+		return grid[y][x].getColor(x,y);
 	}
 	
 	/**
@@ -117,7 +117,7 @@ public class Photograph extends Canvas {
 	 *@param c New color to be sent at this location 
 	 */
 	public void setColor(int x, int y, Color c) {
-		grid[y][x].setColor(Color c);
+		grid[y][x].setColor(x,y,c);
 	}
 
 	/**
