@@ -21,6 +21,9 @@ import java.io.IOException;
 
 import processing.core.PApplet;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class DrawingSurface extends PApplet implements ActionListener{
@@ -28,7 +31,8 @@ public class DrawingSurface extends PApplet implements ActionListener{
 	public final int HEIGHT = 800;
 	private JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
 	private Label Label1 = new Label("Choose your image");
-	private Button Button1 = new Button("select");
+	private JButton Button1 = new JButton("select");
+	private JButton Button2 = new JButton(new ImageIcon("img\\wandcursor.png"));
 	private BufferedImage Image1;
 	private Photograph Canvas1;
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
@@ -45,8 +49,10 @@ public class DrawingSurface extends PApplet implements ActionListener{
 		fr.setLayout(new FlowLayout());
 		fr.add(Label1);
 		fr.add(Button1);
+		fr.add(Button2);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Button1.addActionListener(this);
+		Button2.addActionListener(this);
 		Canvas1 = new Photograph(null);
 		Canvas1.setSize(WIDTH, HEIGHT);
 		fr.add(Canvas1);
@@ -92,7 +98,7 @@ public class DrawingSurface extends PApplet implements ActionListener{
 	 *@param event An event that has happened when the button is pressed  
 	 */
 	public void actionPerformed(ActionEvent event) {
-		Button b = (Button) event.getSource();
+		JButton b = (JButton) event.getSource();
 		if (b == Button1) {
 			try {
 				imageload();
