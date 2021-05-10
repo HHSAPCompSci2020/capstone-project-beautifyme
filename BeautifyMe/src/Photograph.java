@@ -2,6 +2,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.awt.Color;
@@ -94,7 +95,7 @@ public class Photograph extends Canvas {
 	 *@return Color color of the pixel at the location (x,y)  
 	 */
 	public Color getColor(int x, int y) {
-		return pixels.getColor(x,y);
+		return grid[y][x].getColor();
 	}
 	
 	/**
@@ -104,7 +105,37 @@ public class Photograph extends Canvas {
 	 *@param c New color to be sent at this location 
 	 */
 	public void setColor(int x, int y, Color c) {
-		pixels.setColor(x,y,c);
+		grid[y][x].setColor(Color c);
 	}
+	
+	/**
+	 * (Graphical UI)
+	 * Determines which element of the grid matches with a particular pixel coordinate.
+	 * This supports interaction with the grid using mouse clicks in the window.
+	 * 
+	 * @param p A Point object containing a graphical pixel coordinate.
+	 * @param x The x pixel coordinate of the upper left corner of the grid drawing. 
+	 * @param y The y pixel coordinate of the upper left corner of the grid drawing.
+	 * @param width The pixel width of the grid drawing.
+	 * @param height The pixel height of the grid drawing.
+	 * @return A Point object representing a coordinate within the grid, or null if the pixel coordinate
+	 * falls completely outside of the grid.
+	 */
+	public Point clickToIndex(Point p, float x, float y, float width, float height) {
+		Point coordinates = null;
+		for (int row = 0; row < grid.length; row++) {
+			for (int col = 0; col < grid[0].length; col++) {
+				float rectWidth = width/grid[0].length;
+				float rectX = x + (rectWidth*col);
+				float rectHeight = height/grid.length;
+				float rectY = y + (rectHeight*row);
+				
+				if(rectX+rectWidth>p.x && p.x >rectX && rectY+rectHeight>p.y && p.y >rectY)
+					coordinates = new Point(col,row);
+			}
+		}
+		return coordinates;
+	}
+	
 	
 }
