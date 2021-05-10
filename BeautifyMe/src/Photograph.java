@@ -6,16 +6,18 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.awt.Color;
+
 /**
- * This class represents a Photograph.
- * It draws the image to the position of (100,100) with a size of 640x320. 
- * It allows the user to change and get the colors of pixels and upload a new image and get that image.
+ * This class represents a Photograph. It draws the image to the position of
+ * (100,100) with a size of 640x320. It allows the user to change and get the
+ * colors of pixels and upload a new image and get that image.
+ * 
  * @author Mira Shlimenzon
  * @version 1.0 on 5/6
- * @since 1.0 
+ * @since 1.0
  */
 public class Photograph extends Canvas {
-	//FIELDS
+	// FIELDS
 	private BufferedImage image;
 	private Pixel pixels;
 	private int width;
@@ -24,53 +26,55 @@ public class Photograph extends Canvas {
 	private final int MAX_WIDTH = WIDTH - 2 * margin;
 	private final int MAX_HEIGHT = HEIGHT - 2 * margin;
 	protected Pixel[][] grid;
-	
+
 	/**
-	 *Initializes a Photograph with a certain image
-	 *Sets width and height
-	 *Creates Pixels for the Photograph
-	 *@param image BufferedImage that makes up the Photograph
+	 * Initializes a Photograph with a certain image Sets width and height Creates
+	 * Pixels for the Photograph
+	 * 
+	 * @param image BufferedImage that makes up the Photograph
 	 */
-	public Photograph(BufferedImage img){
+	public Photograph(BufferedImage img) {
 		this.image = img;
-		if (image !=null) {
+		if (image != null) {
 			this.width = image.getWidth();
 			this.height = image.getHeight();
 			scale();
 			grid = new Pixel[height][width];
-		}
-		else grid = null;
+		} else
+			grid = null;
 	}
-	
+
 	/**
-	 *Paints the image onto the DrawingSurface at (100,100) with dimension 640x320
-	 *Potentially be able to change topX and topY coordinate and dimensions
-	 *@param g Graphics object to draw
+	 * Paints the image onto the DrawingSurface at (100,100) with dimension 640x320
+	 * Potentially be able to change topX and topY coordinate and dimensions
+	 * 
+	 * @param g Graphics object to draw
 	 */
 	public void paint(Graphics g) {
 		if (image != null) {
 			g.drawImage(image, margin, margin, this.width, this.height, this);
 		}
 	}
-	
+
 	private void scale() {
 		while (width > MAX_WIDTH || height > MAX_HEIGHT) {
-			width = (int) ((double)width * 0.99);
-			height = (int) ((double)height * 0.99);
+			width = (int) ((double) width * 0.99);
+			height = (int) ((double) height * 0.99);
 		}
 	}
-	
+
 	public int getWidth() {
 		return width;
 	}
-	
+
 	public int getHeight() {
 		return height;
 	}
-	
+
 	/**
-	 *Sets a new image for the Photograph
-	 *@param image a Image that will be the new image
+	 * Sets a new image for the Photograph
+	 * 
+	 * @param image a Image that will be the new image
 	 */
 	public void setImage(BufferedImage img) {
 		this.image = img;
@@ -80,83 +84,89 @@ public class Photograph extends Canvas {
 		scale();
 		grid = new Pixel[height][width];
 	}
-	
+
 	public void setsColorForPixels() {
-		if(image != null) {
+		if (image != null) {
 			for (int i = 0; i < height; i++) {
 				for (int j = 0; j < width; j++) {
-					grid[j][i] = new Pixel(new Color(p.getImage().getRGB(j, i));
+					grid[j][i] = new Pixel(new Color(image.getRGB(j, i)));
 				}
 			}
+		}
 
 	}
-	
-	
+
 	/**
-	 *Gets the image being used as the Photograph
-	 *@return image the BufferedImage being used to draw Photograph 
+	 * Gets the image being used as the Photograph
+	 * 
+	 * @return image the BufferedImage being used to draw Photograph
 	 */
 	public BufferedImage getImage() {
 		return image;
 	}
-	
+
 	/**
-	 *Gets the color at the pixel location(x,y)
-	 *@param x X-coordinate of pixel location
-	 *@param y Y-coordinate of pixel location
-	 *@return Color color of the pixel at the location (x,y)  
+	 * Gets the color at the pixel location(x,y)
+	 * 
+	 * @param x X-coordinate of pixel location
+	 * @param y Y-coordinate of pixel location
+	 * @return Color color of the pixel at the location (x,y)
 	 */
 	public Color getColor(int x, int y) {
 		return grid[y][x].getColor();
 	}
-	
+
 	/**
-	 *Sets a new Color at the pixel location(x,y) 
-	 *@param x X-coordinate of pixel location
-	 *@param y Y-coordinate of pixel location
-	 *@param c New color to be sent at this location 
+	 * Sets a new Color at the pixel location(x,y)
+	 * 
+	 * @param x X-coordinate of pixel location
+	 * @param y Y-coordinate of pixel location
+	 * @param c New color to be sent at this location
 	 */
 	public void setColor(int x, int y, Color c) {
-		grid[y][x].setColor();
+		grid[y][x].setColor(c);
 	}
 
 	/**
-	 *Gets the pixel at the pixel location of(x,y)
-	 *@param x X-coordinate of pixel location
-	 *@param y Y-coordinate of pixel location
-	 *@return Pixel pixel at coordinates (x,y)
+	 * Gets the pixel at the pixel location of(x,y)
+	 * 
+	 * @param x X-coordinate of pixel location
+	 * @param y Y-coordinate of pixel location
+	 * @return Pixel pixel at coordinates (x,y)
 	 */
 	public Pixel getPixel(int x, int y) {
 		return grid[y][x];
 	}
+
 	/**
-	 * (Graphical UI)
-	 * Determines which element of the grid matches with a particular pixel coordinate.
-	 * This supports interaction with the grid using mouse clicks in the window.
+	 * (Graphical UI) Determines which element of the grid matches with a particular
+	 * pixel coordinate. This supports interaction with the grid using mouse clicks
+	 * in the window.
 	 * 
-	 * @param p A Point object containing a graphical pixel coordinate.
-	 * @param x The x pixel coordinate of the upper left corner of the grid drawing. 
-	 * @param y The y pixel coordinate of the upper left corner of the grid drawing.
-	 * @param width The pixel width of the grid drawing.
+	 * @param p      A Point object containing a graphical pixel coordinate.
+	 * @param x      The x pixel coordinate of the upper left corner of the grid
+	 *               drawing.
+	 * @param y      The y pixel coordinate of the upper left corner of the grid
+	 *               drawing.
+	 * @param width  The pixel width of the grid drawing.
 	 * @param height The pixel height of the grid drawing.
-	 * @return A Point object representing a coordinate within the grid, or null if the pixel coordinate
-	 * falls completely outside of the grid.
+	 * @return A Point object representing a coordinate within the grid, or null if
+	 *         the pixel coordinate falls completely outside of the grid.
 	 */
 	public Point clickToIndex(Point p, float x, float y, float width, float height) {
 		Point coordinates = null;
 		for (int row = 0; row < grid.length; row++) {
 			for (int col = 0; col < grid[0].length; col++) {
-				float rectWidth = width/grid[0].length;
-				float rectX = x + (rectWidth*col);
-				float rectHeight = height/grid.length;
-				float rectY = y + (rectHeight*row);
-				
-				if(rectX+rectWidth>p.x && p.x >rectX && rectY+rectHeight>p.y && p.y >rectY)
-					coordinates = new Point(col,row);
+				float rectWidth = width / grid[0].length;
+				float rectX = x + (rectWidth * col);
+				float rectHeight = height / grid.length;
+				float rectY = y + (rectHeight * row);
+
+				if (rectX + rectWidth > p.x && p.x > rectX && rectY + rectHeight > p.y && p.y > rectY)
+					coordinates = new Point(col, row);
 			}
 		}
 		return coordinates;
 	}
-	
-	
+
 }
