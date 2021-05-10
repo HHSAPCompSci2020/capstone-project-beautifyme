@@ -25,13 +25,12 @@ class Pixel {
 	 */
 	public Pixel(Photograph p) {
 		if(p.getImage() != null) {
-			width = p.width;
-			height = p.height;
+			width = p.getWidth();
+			height = p.getHeight();
 			color  = new Color[width][height];
-			BufferedImage image = (BufferedImage)p.getImage();
 			for (int i = 0; i < height; i++) {
 				for (int j = 0; j < width; j++) {
-					color[j][i] = new Color(image.getRGB(j, i));
+					color[j][i] = new Color(p.getImage().getRGB(j, i));
 				}
 			}
 

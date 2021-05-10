@@ -6,6 +6,7 @@
  */
 
 import java.awt.Button;
+import java.awt.Point;
 import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
@@ -14,22 +15,29 @@ import java.awt.Label;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import processing.core.PApplet;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-public class DrawingSurface implements ActionListener {
-	JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
-	Label Label1 = new Label("Choose your image");
-	Button Button1 = new Button("select");
-	Image Image1;
-	Photograph Canvas1;
-	FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+public class DrawingSurface extends PApplet implements ActionListener{
+	public final int WIDTH = 800;
+	public final int HEIGHT = 800;
+	private JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
+	private Label Label1 = new Label("Choose your image");
+	private Button Button1 = new Button("select");
+	private BufferedImage Image1;
+	private Photograph Canvas1;
+	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+	private Photograph board;
 
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates a button and an image
 	 */
 	public DrawingSurface() {
-		fr.setSize(500, 500);
-		fr.setLocation(200, 200);
+		fr.setSize(WIDTH, HEIGHT);
+		fr.setLocation(50, 50);
 		fr.setBackground(Color.lightGray);
 		fr.setLayout(new FlowLayout());
 		fr.add(Label1);
@@ -37,26 +45,38 @@ public class DrawingSurface implements ActionListener {
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Button1.addActionListener(this);
 		Canvas1 = new Photograph(null);
-		Canvas1.setSize(1000, 1000);
+		Canvas1.setSize(WIDTH, HEIGHT);
 		fr.add(Canvas1);
 		fr.show();
 	}
-	
 	
 	/**
 	 *Loads an image to the Drawing Surface
 	 */
 	public void imageload() {
+	
 		fd.show();
 		if (fd.getFile() == null) {
-			Label1.setText("You have not select");
-		} else {
+			Label1.setText("You have not selected");
+		} else{
 			String d = (fd.getDirectory() + fd.getFile());
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
 			Image1 = toolkit.getImage(d);
+			//ImageIO.read() - need to get a File from fd s
 			Canvas1.setImage(Image1);
 			Canvas1.repaint();
 		}
+	}
+	
+	public void mousePressed() {
+		if (mouseButton == LEFT) {
+			Point click = new Point(mouseX,mouseY);
+			float dimension = height;
+			Point cellCoord = board.clickToIndex(click,0,0,dimension,dimension);
+			if (cellCoord != null) {
+					board.findPath(cellCoord.x, cellCoord.y);  
+			}
+		} 
 	}
 	
 	/**
