@@ -23,8 +23,8 @@ public class Photograph extends Canvas {
 	private int width;
 	private int height;
 	private int margin = 50;
-	private final int MAX_WIDTH = WIDTH - 2 * margin;
-	private final int MAX_HEIGHT = HEIGHT - 2 * margin;
+	private final int MAX_WIDTH = 320;
+	private final int MAX_HEIGHT = 640;
 	protected Pixel[][] grid;
 
 	/**
@@ -80,7 +80,6 @@ public class Photograph extends Canvas {
 		this.image = img;
 		this.width = image.getWidth();
 		this.height = image.getHeight();
-		System.out.println(width);
 		scale();
 		grid = new Pixel[height][width];
 	}
