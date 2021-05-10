@@ -31,6 +31,7 @@ public class DrawingSurface extends PApplet implements ActionListener{
 	private Photograph Canvas1;
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 	private Photograph board;
+	private MagicWand wand;
 
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates a button and an image
@@ -68,13 +69,17 @@ public class DrawingSurface extends PApplet implements ActionListener{
 		}
 	}
 	
+	/**
+	 *When mouse presses within the grid
+	 *@param event An event that has happened when the button is pressed  
+	 */
 	public void mousePressed() {
 		if (mouseButton == LEFT) {
 			Point click = new Point(mouseX,mouseY);
 			float dimension = height;
 			Point cellCoord = board.clickToIndex(click,0,0,dimension,dimension);
 			if (cellCoord != null) {
-					board.findPath(cellCoord.x, cellCoord.y);  
+					wand.edit(board.getPixel(cellCoord.x, cellCoord.y));
 			}
 		} 
 	}

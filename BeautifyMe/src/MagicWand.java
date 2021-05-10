@@ -8,6 +8,7 @@ public class MagicWand{
 	public MagicWand() {
 		
 	}
-
+	
+	public void edit(Pixel p) { }
 	
 }

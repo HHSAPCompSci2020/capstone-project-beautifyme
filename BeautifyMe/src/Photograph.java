@@ -10,7 +10,7 @@ import java.awt.Color;
  * This class represents a Photograph.
  * It draws the image to the position of (100,100) with a size of 640x320. 
  * It allows the user to change and get the colors of pixels and upload a new image and get that image.
- * @author Mira Shlimenzon and Sarah
+ * @author Mira Shlimenzon
  * @version 1.0 on 5/6
  * @since 1.0 
  */
@@ -107,7 +107,16 @@ public class Photograph extends Canvas {
 	public void setColor(int x, int y, Color c) {
 		grid[y][x].setColor(Color c);
 	}
-	
+
+	/**
+	 *Gets the pixel at the pixel location of(x,y)
+	 *@param x X-coordinate of pixel location
+	 *@param y Y-coordinate of pixel location
+	 *@return Pixel pixel at coordinates (x,y)
+	 */
+	public Pixel getPixel(int x, int y) {
+		return grid[y][x];
+	}
 	/**
 	 * (Graphical UI)
 	 * Determines which element of the grid matches with a particular pixel coordinate.
