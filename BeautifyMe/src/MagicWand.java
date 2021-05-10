@@ -5,6 +5,9 @@
  * @since 1.0 
  */
 public class MagicWand{
-	public MagicWand() {}
+	public MagicWand() {
+		
+	}
+
 	
 }

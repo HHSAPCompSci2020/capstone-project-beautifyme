@@ -6,6 +6,7 @@
  */
 
 import java.awt.Button;
+import java.awt.Point;
 import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
@@ -16,11 +17,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
+import processing.core.PApplet;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-public class DrawingSurface implements ActionListener {
+public class DrawingSurface extends PApplet implements ActionListener{
 	public final int WIDTH = 800;
 	public final int HEIGHT = 800;
 	private JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
@@ -29,6 +30,7 @@ public class DrawingSurface implements ActionListener {
 	private BufferedImage Image1;
 	private Photograph Canvas1;
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+	private Photograph board;
 
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates a button and an image
@@ -64,6 +66,17 @@ public class DrawingSurface implements ActionListener {
 			Canvas1.setImage(Image1);
 			Canvas1.repaint();
 		}
+	}
+	
+	public void mousePressed() {
+		if (mouseButton == LEFT) {
+			Point click = new Point(mouseX,mouseY);
+			float dimension = height;
+			Point cellCoord = board.clickToIndex(click,0,0,dimension,dimension);
+			if (cellCoord != null) {
+					board.findPath(cellCoord.x, cellCoord.y);  
+			}
+		} 
 	}
 	
 	/**
