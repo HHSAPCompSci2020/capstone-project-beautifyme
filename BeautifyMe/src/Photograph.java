@@ -47,8 +47,6 @@ public class Photograph extends Canvas {
 	public void paint(Graphics g) {
 		if (image != null) {
 			g.drawImage(image, margin, margin, this.width, this.height, this);
-			//maybe can change 640 to height and 320 to height 
-			//change 100 to 100 to topX and topY
 		}
 	}
 	
@@ -83,7 +81,7 @@ public class Photograph extends Canvas {
 	 *Gets the image being used as the Photograph
 	 *@return image the BufferedImage being used to draw Photograph 
 	 */
-	public Image getImage() {
+	public BufferedImage getImage() {
 		return image;
 	}
 	
