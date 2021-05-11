@@ -1,13 +1,14 @@
 /**
  * This class represents a DrawingSurface that contains the Photograph and buttons.
- * @author Sarah Sabaa
- * @version 1.0 on 5/6
+ * @author Sarah Sabaa and Mira Shlimenzon
+ * @version 2.0 on 5/11
  * @since 1.0 
  */
 
 import java.awt.Button;
 import java.awt.Point;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -20,29 +21,38 @@ import java.io.File;
 import java.io.IOException;
 
 import processing.core.PApplet;
+import processing.core.PImage;
+
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class DrawingSurface extends PApplet implements ActionListener{
+public class DrawingSurface extends PApplet  implements ActionListener{
 	public final int WIDTH = 800;
 	public final int HEIGHT = 800;
 	private JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
+	
+	
 	private Label Label1 = new Label("Choose your image");
 	private JButton Button1 = new JButton("select");
-	private JButton Button2 = new JButton(new ImageIcon("img\\wandcursor.png"));
+	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
 	private BufferedImage Image1;
 	private Photograph Canvas1;
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 	private Photograph board;
 	private MagicWand wand;
-
+	private boolean wandPressed;
+	
+	private PImage wandCursor;
+	
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates a button and an image
 	 */
 	public DrawingSurface() {
+		wandPressed = false;
 		fr.setSize(WIDTH, HEIGHT);
 		fr.setLocation(50, 50);
 		fr.setBackground(Color.lightGray);
@@ -58,7 +68,13 @@ public class DrawingSurface extends PApplet implements ActionListener{
 		fr.add(Canvas1);
 		fr.show();
 	}
+	public void setup() {
+		wandCursor = super.loadImage("img/wandcursor.png");
+	}
 	
+	public void draw() {
+		if(wandPressed) cursor(wandCursor);
+	}
 	/**
 	 *Loads an image to the Drawing Surface
 	 * @throws IOException 
@@ -76,6 +92,7 @@ public class DrawingSurface extends PApplet implements ActionListener{
 		}
 	}
 	
+	
 	/**
 	 *When mouse presses within the grid
 	 *@param event An event that has happened when the button is pressed  
@@ -83,7 +100,6 @@ public class DrawingSurface extends PApplet implements ActionListener{
 	public void mousePressed() {
 		
 		if (mouseButton == LEFT) { 
-			//and you pressed within the photo do all this!!! if not just have normal press
 			Point click = new Point(mouseX,mouseY);
 			float dimension = height;
 			Point cellCoord = board.clickToIndex(click,0,0,dimension,dimension);
@@ -103,9 +119,11 @@ public class DrawingSurface extends PApplet implements ActionListener{
 			try {
 				imageload();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		else if(b == Button2) {
+			wandPressed = true;
+			}
 	}
 }
