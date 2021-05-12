@@ -104,7 +104,7 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 			float dimension = height;
 			Point cellCoord = board.clickToIndex(click,0,0,dimension,dimension);
 			if (cellCoord != null) {
-					wand.edit(board.getPixel(cellCoord.x, cellCoord.y));
+					wand.edit(mouseX,mouseY);
 			}
 		} 
 	}
