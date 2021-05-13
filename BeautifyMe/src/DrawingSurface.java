@@ -16,6 +16,8 @@ import java.awt.Label;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +32,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class DrawingSurface extends PApplet  implements ActionListener{
+public class DrawingSurface implements MouseListener, ActionListener{
 	public final int WIDTH = 800;
 	public final int HEIGHT = 800;
 	private JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
@@ -96,16 +98,10 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 	 *Mouse is pressed within the grid, and the user can edit the pixel that the mouse is pressing on
 	 *
 	 */
-	public void mousePressed() {
+	public void mousePressed(MouseEvent e) {
 		
-		if (mouseButton == LEFT) { 
-			Point click = new Point(mouseX,mouseY);
-			float dimension = height;
-			Point cellCoord = board.clickToIndex(click,0,0,dimension,dimension);
-			if (cellCoord != null) {
-					wand.edit(mouseX,mouseY);
-			}
-		} 
+		wand.edit(e.getX(), e.getY());
+
 	}
 	
 	/**
@@ -126,5 +122,29 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 		else if(b == Button2) {
 			//cursor(wandCursor);
 			}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
