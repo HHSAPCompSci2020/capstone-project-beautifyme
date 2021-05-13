@@ -15,11 +15,8 @@ import java.awt.Color;
  * @author Mira Shlimenzon, Sarah Sabaa (image upload and scaling)
  * @version 2.0 on 5/13
  */
-<<<<<<< HEAD
+
 public class Photograph {
-=======
-public class Photograph extends Canvas { //weird class to use 
->>>>>>> 8d72a4b6e2df1776c8cded20b559eb5ab3590bf6
 	// FIELDS
 	private BufferedImage image;
 	private Pixel pixels;
