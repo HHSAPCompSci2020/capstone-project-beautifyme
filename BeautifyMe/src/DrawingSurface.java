@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.Toolkit;
@@ -32,7 +33,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class DrawingSurface implements MouseListener, ActionListener{
+public class DrawingSurface extends JPanel implements MouseListener, ActionListener{
 	public final int WIDTH = 800;
 	public final int HEIGHT = 800;
 	private JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
@@ -64,8 +65,6 @@ public class DrawingSurface implements MouseListener, ActionListener{
 		Button1.addActionListener(this);
 		Button2.addActionListener(this);
 		Canvas1 = new Photograph(null);
-		Canvas1.setSize(WIDTH, HEIGHT);
-		fr.add(Canvas1);
 		fr.show();
 	}
 	
@@ -89,9 +88,13 @@ public class DrawingSurface implements MouseListener, ActionListener{
 			File[] file = fd.getFiles();
 			Image1 = ImageIO.read(file[0]);
 			Canvas1.setImage(Image1);
-			Canvas1.repaint();
+			repaint();
 		}
 	}
+	
+	public void paintComponent(Graphics g) {
+       Canvas1.paint(g);
+    }
 	
 	
 	/**
