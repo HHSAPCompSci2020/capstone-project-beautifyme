@@ -12,16 +12,14 @@ import java.awt.Color;
  * (50,50). If the height and width is too large, it will scale the image down.
  * It allows the user to change and get the colors of pixels and upload a new image and get that image.
  * 
-<<<<<<< Updated upstream
- * @author Mira Shlimenzon, Sarah Sabaa (image upload and scaling), Game of Life Code (Mira wrote)
+ * @author Mira Shlimenzon, Sarah Sabaa (image upload and scaling)
  * @version 2.0 on 5/13
-=======
- * @author Mira Shlimenzon and Sarah Sabaa
- * @version 1.0 on 5/6
->>>>>>> Stashed changes
- * @since 1.0
  */
+<<<<<<< HEAD
 public class Photograph {
+=======
+public class Photograph extends Canvas { //weird class to use 
+>>>>>>> 8d72a4b6e2df1776c8cded20b559eb5ab3590bf6
 	// FIELDS
 	private BufferedImage image;
 	private Pixel pixels;
