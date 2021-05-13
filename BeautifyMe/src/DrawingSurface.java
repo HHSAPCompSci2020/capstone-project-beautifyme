@@ -32,7 +32,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class DrawingSurface implements MouseListener, ActionListener{
+public class DrawingSurface extends JPanel implements MouseListener, ActionListener{
 	public final int WIDTH = 800;
 	public final int HEIGHT = 800;
 	private JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
@@ -55,7 +55,7 @@ public class DrawingSurface implements MouseListener, ActionListener{
 	//drawingsurface = processing, instead of jbuttons have rectangles and when you click in rectangle do something! 
 	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
 	//on rectangle make 
-	private PImage wandCursor;
+	private Image wandCursor;
 	
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates buttons and an image
@@ -76,14 +76,15 @@ public class DrawingSurface implements MouseListener, ActionListener{
 		fr.add(Canvas1);
 		fr.setVisible(true);
 		fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+		
+		try {
+			wandCursor = ImageIO.read(new File("img/wandcursor.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	/**
-	 * Sets up the wand cursor image
-	 */
-	public void setup() {
-		wandCursor = super.loadImage("img/wandcursor.png");
-	}
 	
 	/**
 	 *Loads an image to the Drawing Surface
@@ -108,9 +109,7 @@ public class DrawingSurface implements MouseListener, ActionListener{
 	 *
 	 */
 	public void mousePressed(MouseEvent e) {
-		
 		wand.edit(e.getX(), e.getY());
-
 	}
 	
 	/**
@@ -129,7 +128,9 @@ public class DrawingSurface implements MouseListener, ActionListener{
 			}
 		}
 		else if(b == Button2) {
-			//cursor(wandCursor);
+			Toolkit toolkit = Toolkit.getDefaultToolkit();
+			Cursor c = toolkit.createCustomCursor(wandCursor , new Point(16, 16), "img");
+			setCursor (c);
 			}
 	}
 
