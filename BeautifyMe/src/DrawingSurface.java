@@ -93,7 +93,7 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 	
 	
 	/**
-	 *Mouse is pressed within the grid, and the user can edit the pixel 
+	 *Mouse is pressed within the grid, and the user can edit the pixel that the mouse is pressing on
 	 *
 	 */
 	public void mousePressed() {
