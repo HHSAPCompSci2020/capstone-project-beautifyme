@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.Toolkit;
@@ -43,7 +44,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
 	private BufferedImage Image1;
 	private Photograph Canvas1;
-	private FileDialog fd;
+	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 	private Photograph board;
 	private MagicWand wand;
 	
@@ -99,9 +100,13 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 			File[] file = fd.getFiles();
 			Image1 = ImageIO.read(file[0]);
 			Canvas1.setImage(Image1);
-			Canvas1.repaint();
+			repaint();
 		}
 	}
+	
+	public void paintComponent(Graphics g) {
+       Canvas1.paint(g);
+    }
 	
 	
 	/**
