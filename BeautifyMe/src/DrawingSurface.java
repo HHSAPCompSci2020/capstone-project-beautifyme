@@ -44,7 +44,6 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 	private Photograph board;
 	private MagicWand wand;
-	private boolean wandPressed;
 	
 	private PImage wandCursor;
 	
@@ -52,7 +51,7 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates a button and an image
 	 */
 	public DrawingSurface() {
-		wandPressed = false;
+		//wandPressed = false;
 		fr.setSize(WIDTH, HEIGHT);
 		fr.setLocation(50, 50);
 		fr.setBackground(Color.lightGray);
@@ -72,9 +71,6 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 		wandCursor = super.loadImage("img/wandcursor.png");
 	}
 	
-	public void draw() {
-		if(wandPressed) cursor(wandCursor);
-	}
 	/**
 	 *Loads an image to the Drawing Surface
 	 * @throws IOException 
@@ -123,7 +119,7 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 			}
 		}
 		else if(b == Button2) {
-			wandPressed = true;
+			cursor(wandCursor);
 			}
 	}
 }
