@@ -14,7 +14,6 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Label;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -23,11 +22,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import processing.core.PApplet;
-import processing.core.PImage;
-
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,7 +40,6 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private BufferedImage Image1;
 	private Photograph Canvas1;
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
-	private Photograph board;
 	private MagicWand wand;
 	
 	//try to limit Swing components; processing world 
@@ -56,7 +50,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	//drawingsurface = processing, instead of jbuttons have rectangles and when you click in rectangle do something! 
 	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
 	//on rectangle make 
-	private PImage wandCursor;
+	private Image wandCursor;
 	
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates buttons and an image

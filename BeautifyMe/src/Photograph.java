@@ -53,7 +53,7 @@ public class Photograph {
 	 */
 	public void paint(Graphics g) {
 		if (image != null) {
-			g.drawImage((Image)image, margin, margin, this.width, this.height, null);
+			g.drawImage(image, margin, margin, this.width, this.height, null);
 		}
 	}
 
