@@ -11,13 +11,19 @@ import java.awt.image.BufferedImage;
 public class MagicWand {
 	private Photograph photo;
 
+	/**
+	 * 
+	 * @param Takes in a photo whose pixels are editted
+	 */
 	public MagicWand(Photograph photo) {
 		this.photo = photo;
 
 	}
 
 	/**
-	 * This method edits a pixel rgb value by giving it the average rgb value around the pixel
+	 * This method edits a pixel rgb value by giving it the average rgb value around
+	 * the pixel
+	 * 
 	 * @param x represents the x pixel coordinate
 	 * @param y represents the y pixel coordinate
 	 */
