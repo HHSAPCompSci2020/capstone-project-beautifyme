@@ -16,6 +16,12 @@ public class MagicWand {
 
 	}
 
+	/**
+	 * This method edits a pixel rgb value by giving it the average rgb value around the pixel
+	 * @param x represents the x pixel coordinate
+	 * @param y represents the y pixel coordinate
+	 */
+
 	public void edit(int x, int y) {
 		x = x - 50;
 		y = y - 50;
