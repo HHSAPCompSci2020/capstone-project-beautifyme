@@ -20,8 +20,10 @@ import javax.swing.JFrame;
 
 
 public class Main {
+	
 	/**
 	 *Creates the drawing surface and runs the whole program
+	 *Hopefully in the future this class will contain the JFrame 
 	 *@param args[] String with arguments
 	 */
 	public static void main(String args[]) {

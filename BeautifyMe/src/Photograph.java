@@ -9,11 +9,11 @@ import java.awt.Color;
 
 /**
  * This class represents a Photograph. It draws the image to the position of
- * (100,100) with a size of 640x320. It allows the user to change and get the
- * colors of pixels and upload a new image and get that image.
+ * (50,50). If the height and width is too large, it will scale the image down.
+ * It allows the user to change and get the colors of pixels and upload a new image and get that image.
  * 
- * @author Mira Shlimenzon
- * @version 1.0 on 5/6
+ * @author Mira Shlimenzon, Sarah Sabaa (image upload and scaling), Game of Life Code (Mira wrote)
+ * @version 2.0 on 5/13
  * @since 1.0
  */
 public class Photograph extends Canvas {
@@ -28,10 +28,11 @@ public class Photograph extends Canvas {
 	protected Pixel[][] grid;
 
 	/**
-	 * Initializes a Photograph with a certain image Sets width and height Creates
-	 * Pixels for the Photograph
+	 * Initializes a Photograph with a certain image and a 2D array for pixels in the photograph
+	 * Sets width and height 
+	 * If image is too big, will scale the image down 
 	 * 
-	 * @param image BufferedImage that makes up the Photograph
+	 * @param img BufferedImage that makes up the Photograph
 	 */
 	public Photograph(BufferedImage img) {
 		this.image = img;
@@ -45,10 +46,10 @@ public class Photograph extends Canvas {
 	}
 
 	/**
-	 * Paints the image onto the DrawingSurface at (100,100) with dimension 640x320
-	 * Potentially be able to change topX and topY coordinate and dimensions
+	 * Paints the image onto the DrawingSurface at coordinates (50,50) with 
+	 * either the image's real width and height or a scaled version of the image
 	 * 
-	 * @param g Graphics object to draw
+	 * @param g Graphics object to draw with
 	 */
 	public void paint(Graphics g) {
 		if (image != null) {
@@ -56,6 +57,9 @@ public class Photograph extends Canvas {
 		}
 	}
 
+	/**
+	 * Scales the image down so to not go over the max width and height 
+	 */
 	private void scale() {
 		while (width > MAX_WIDTH || height > MAX_HEIGHT) {
 			width = (int) ((double) width * 0.99);
@@ -63,18 +67,28 @@ public class Photograph extends Canvas {
 		}
 	}
 
+	/**
+	 * Gets the width of the image 
+	 * 
+	 * @return width Width of the image 
+	 */
 	public int getWidth() {
 		return width;
 	}
 
+	/**
+	 * Gets the height of the image 
+	 * 
+	 * @return height Height of the image 
+	 */
 	public int getHeight() {
 		return height;
 	}
 
 	/**
-	 * Sets a new image for the Photograph
+	 * Sets a new image for the Photograph, sets width and height, and creates 2D grid of Pixels
 	 * 
-	 * @param image a Image that will be the new image
+	 * @param img a Image that will be the new image
 	 */
 	public void setImage(BufferedImage img) {
 		this.image = img;
@@ -84,6 +98,9 @@ public class Photograph extends Canvas {
 		grid = new Pixel[height][width];
 	}
 
+	/**
+	 * Fills the 2D Array of Pixels with pixels of their designated color 
+	 */
 	public void setsColorForPixels() {
 		if (image != null) {
 			for (int i = 0; i < height; i++) {
@@ -105,7 +122,7 @@ public class Photograph extends Canvas {
 	}
 
 	/**
-	 * Gets the color at the pixel location(x,y)
+	 * Gets the color at the pixel location(x,y) in the grid
 	 * 
 	 * @param x X-coordinate of pixel location
 	 * @param y Y-coordinate of pixel location
@@ -116,7 +133,7 @@ public class Photograph extends Canvas {
 	}
 
 	/**
-	 * Sets a new Color at the pixel location(x,y)
+	 * Sets a new Color at the pixel location(x,y) in the grid
 	 * 
 	 * @param x X-coordinate of pixel location
 	 * @param y Y-coordinate of pixel location

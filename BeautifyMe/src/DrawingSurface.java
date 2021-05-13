@@ -1,8 +1,8 @@
 /**
  * This class represents a DrawingSurface that contains the Photograph and buttons.
  * @author Sarah Sabaa and Mira Shlimenzon
- * @version 2.0 on 5/11
- * @since 1.0 
+ * @version 2.0 on 5/13
+ * @since 1.0
  */
 
 import java.awt.Button;
@@ -44,15 +44,13 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 	private Photograph board;
 	private MagicWand wand;
-	private boolean wandPressed;
 	
 	private PImage wandCursor;
 	
 	/**
-	 *Initializes a Drawing Surface with a 500 by 500 size and creates a button and an image
+	 *Initializes a Drawing Surface with a 500 by 500 size and creates buttons and an image
 	 */
 	public DrawingSurface() {
-		wandPressed = false;
 		fr.setSize(WIDTH, HEIGHT);
 		fr.setLocation(50, 50);
 		fr.setBackground(Color.lightGray);
@@ -68,13 +66,14 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 		fr.add(Canvas1);
 		fr.show();
 	}
+	
+	/**
+	 * Sets up the wand cursor image
+	 */
 	public void setup() {
 		wandCursor = super.loadImage("img/wandcursor.png");
 	}
 	
-	public void draw() {
-		if(wandPressed) cursor(wandCursor);
-	}
 	/**
 	 *Loads an image to the Drawing Surface
 	 * @throws IOException 
@@ -94,8 +93,8 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 	
 	
 	/**
-	 *When mouse presses within the grid
-	 *@param event An event that has happened when the button is pressed  
+	 *Mouse is pressed within the grid, and the user can edit the pixel that the mouse is pressing on
+	 *
 	 */
 	public void mousePressed() {
 		
@@ -110,8 +109,10 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 	}
 	
 	/**
-	 *Loads the image when the button is pushed 
-	 *@param event An event that has happened when the button is pressed  
+	 *Loads the image when the upload button is pushed
+	 *Changes the cursor when the magic wand button is pushed
+	 * 
+	 *@param event Event that has happened when the button is pressed  
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton b = (JButton) event.getSource();
@@ -123,7 +124,7 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 			}
 		}
 		else if(b == Button2) {
-			wandPressed = true;
+			//cursor(wandCursor);
 			}
 	}
 }

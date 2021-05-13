@@ -5,15 +5,17 @@ import java.awt.image.BufferedImage;
  * This class represents a MagicWand that can edit pixels.
  * 
  * @author Mana Nagampalli
- * @version 1.0 on 5/6
+ * @version 2.0 on 5/13
  * @since 1.0
  */
 public class MagicWand {
 	private Photograph photo;
 
+
 	/**
+	 * Initializes a MagicWand for a photograph 
 	 * 
-	 * @param Takes in a photo whose pixels are editted
+	 * @param photo Photograph that the user uploaded
 	 */
 	public MagicWand(Photograph photo) {
 		this.photo = photo;
@@ -21,11 +23,16 @@ public class MagicWand {
 	}
 
 	/**
+
 	 * This method edits a pixel rgb value by giving it the average rgb value around
 	 * the pixel
 	 * 
 	 * @param x represents the x pixel coordinate
 	 * @param y represents the y pixel coordinate
+	 * This method edits a pixel's rgb value by giving it the average rgb value around
+	 * 
+	 * @param x X-coordinate of pixel
+	 * @param y Y-coordinate of pixel
 	 */
 
 	public void edit(int x, int y) {
@@ -60,7 +67,6 @@ public class MagicWand {
 			}
 		}
 		photo.setColor(x, y, new Color(red / redCount, green / greenCount, blue / blueCount));
-
 	}
 
 }
