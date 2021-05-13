@@ -22,7 +22,7 @@ public class Photograph extends Canvas {
 	private Pixel pixels;
 	private int width;
 	private int height;
-	private int margin = 50;
+	public int margin = 50;
 	private final int MAX_WIDTH = 320;
 	private final int MAX_HEIGHT = 640;
 	protected Pixel[][] grid;
