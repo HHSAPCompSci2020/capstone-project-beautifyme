@@ -73,14 +73,8 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		Button1.addActionListener(this);
 		Button2.addActionListener(this);
 		Canvas1 = new Photograph(null);
-<<<<<<< HEAD
 		fr.setVisible(true);
-=======
-		Canvas1.setSize(WIDTH, HEIGHT);
-		fr.add(Canvas1);
-		fr.setVisible(true);
-		fd = new FileDialog(fr, "Open", FileDialog.LOAD);
->>>>>>> 8d72a4b6e2df1776c8cded20b559eb5ab3590bf6
+		
 	}
 	
 	/**
