@@ -27,21 +27,25 @@ public class MagicWand {
 		int blueCount = 0;
 
 		for (int i = x - 7; i < x + 7; i++) {
-			for (int j = y - 7; j < y + 7; j++) {
-				if (i == x || j == y) {
-					red = 0;
-					green = 0;
-					blue = 0;
-				}
-				Color color = photo.getColor(i, j);
-				red = red + color.getRed();
-				green = green + color.getGreen();
-				blue = blue + color.getBlue();
-				redCount++;
-				greenCount++;
-				blueCount++;
-			}
+			if (x - 7 > 50 || x + 7 < 320) {
+				for (int j = y - 7; j < y + 7; j++) {
+					if (y - 7 > 50 || y + 7 < 640) {
+						if (i == x || j == y) {
+							red = 0;
+							green = 0;
+							blue = 0;
+						}
 
+						Color color = photo.getColor(i, j);
+						red = red + color.getRed();
+						green = green + color.getGreen();
+						blue = blue + color.getBlue();
+						redCount++;
+						greenCount++;
+						blueCount++;
+					}
+				}
+			}
 		}
 		photo.setColor(x, y, new Color(red / redCount, green / greenCount, blue / blueCount));
 
