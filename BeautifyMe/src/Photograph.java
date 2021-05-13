@@ -32,7 +32,7 @@ public class Photograph extends Canvas {
 	 * Sets width and height 
 	 * If image is too big, will scale the image down 
 	 * 
-	 * @param image BufferedImage that makes up the Photograph
+	 * @param img BufferedImage that makes up the Photograph
 	 */
 	public Photograph(BufferedImage img) {
 		this.image = img;
@@ -88,7 +88,7 @@ public class Photograph extends Canvas {
 	/**
 	 * Sets a new image for the Photograph, sets width and height, and creates 2D grid of Pixels
 	 * 
-	 * @param image a Image that will be the new image
+	 * @param img a Image that will be the new image
 	 */
 	public void setImage(BufferedImage img) {
 		this.image = img;

@@ -15,7 +15,7 @@ public class MagicWand {
 	/**
 	 * Initializes a MagicWand for a photograph 
 	 * 
-	 * @param c Color of the pixel 
+	 * @param photo Photograph that the user uploaded 
 	 */
 	public MagicWand(Photograph photo) {
 		this.photo = photo;
