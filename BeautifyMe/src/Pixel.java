@@ -1,8 +1,8 @@
 
 /**
-* This class represents the Pixels within a Photograph
-* It allows the user to change and get the colors of each individual pixel.
-* @author Mana Nagampalli, Mira Shlimenzon, and JavaDip (for the try and catch part)
+* This class represents a single Pixel that is within a photograph
+* It allows the user to change the color of the pixel and get the color of the pixel.
+* @author Mana Nagampalli, Mira Shlimenzon, and JavaDip (for the basic idea of the Pixel)
 * @version 1.0 on 5/6
 * @since 1.0 
 */
@@ -19,32 +19,27 @@ class Pixel {
 	Color color;
 
 	/**
-	 * Initializes the 2D Array of Pixels with the Color of each designated pixel
-	 * for the Photograph
+	 * Initializes a Pixel with a designated color part of a photograph
 	 * 
-	 * @param p Photograph that the pixels belong to
+	 * @param c Color of the pixel 
 	 */
 	public Pixel(Color c) {
 		this.color = c;
 	}
 
 	/**
-	 * Gets the color at the pixel location(x,y)
+	 * Gets the color for this pixel
 	 * 
-	 * @param x X-coordinate of pixel location
-	 * @param y Y-coordinate of pixel location
-	 * @return Color color of the pixel at the location (x,y)
+	 * @return Color color of pixel
 	 */
 	public Color getColor() {
 		return color;
 	}
 
 	/**
-	 * Sets a new Color at the pixel location(x,y)
+	 * Sets a new Color for the pixel 
 	 * 
-	 * @param x X-coordinate of pixel location
-	 * @param y Y-coordinate of pixel location
-	 * @param c New color to be sent at this location
+	 * @param c New color to be set
 	 */
 	public void setColor(Color c) {
 		color = c;
