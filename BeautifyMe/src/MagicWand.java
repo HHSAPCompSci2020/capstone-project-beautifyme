@@ -11,10 +11,8 @@ import java.awt.image.BufferedImage;
 public class MagicWand {
 	private Photograph photo;
 
-
 	/**
-	 * Initializes a MagicWand for a photograph 
-	 * 
+	 * Initializes a MagicWand for a photograph
 	 * @param photo Photograph that the user uploaded
 	 */
 	public MagicWand(Photograph photo) {
@@ -23,13 +21,13 @@ public class MagicWand {
 	}
 
 	/**
-
+	 * 
 	 * This method edits a pixel rgb value by giving it the average rgb value around
 	 * the pixel
 	 * 
 	 * @param x represents the x pixel coordinate
-	 * @param y represents the y pixel coordinate
-	 * This method edits a pixel's rgb value by giving it the average rgb value around
+	 * @param y represents the y pixel coordinate This method edits a pixel's rgb
+	 *          value by giving it the average rgb value around
 	 * 
 	 * @param x X-coordinate of pixel
 	 * @param y Y-coordinate of pixel
@@ -41,9 +39,7 @@ public class MagicWand {
 		int red = 0;
 		int green = 0;
 		int blue = 0;
-		int redCount = 0;
-		int greenCount = 0;
-		int blueCount = 0;
+		int count=0;
 
 		for (int i = x - 7; i < x + 7; i++) {
 			if (x - 7 > 50 || x + 7 < 320) {
@@ -59,14 +55,12 @@ public class MagicWand {
 						red = red + color.getRed();
 						green = green + color.getGreen();
 						blue = blue + color.getBlue();
-						redCount++;
-						greenCount++;
-						blueCount++;
+						count++;
 					}
 				}
 			}
 		}
-		photo.setColor(x, y, new Color(red / redCount, green / greenCount, blue / blueCount));
+		photo.setColor(x, y, new Color(red / count, green / count, blue / count));
 	}
 
 }
