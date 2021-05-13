@@ -15,7 +15,7 @@ public class MagicWand {
 	/**
 	 * Initializes a MagicWand for a photograph 
 	 * 
-	 * @param photo Photograph that the user uploaded 
+	 * @param photo Photograph that the user uploaded
 	 */
 	public MagicWand(Photograph photo) {
 		this.photo = photo;
@@ -23,10 +23,16 @@ public class MagicWand {
 	}
 
 	/**
+
+	 * This method edits a pixel rgb value by giving it the average rgb value around
+	 * the pixel
+	 * 
+	 * @param x represents the x pixel coordinate
+	 * @param y represents the y pixel coordinate
 	 * This method edits a pixel's rgb value by giving it the average rgb value around
 	 * 
 	 * @param x X-coordinate of pixel
-	 * @param y Y-coordinate of pixel 
+	 * @param y Y-coordinate of pixel
 	 */
 
 	public void edit(int x, int y) {
