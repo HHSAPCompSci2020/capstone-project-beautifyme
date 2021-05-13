@@ -26,7 +26,6 @@ public class Photograph {
 	private final int MAX_WIDTH = 320;
 	private final int MAX_HEIGHT = 640;
 	protected Pixel[][] grid;
-	ImageObserver something;
 
 	/**
 	 * Initializes a Photograph with a certain image and a 2D array for pixels in the photograph
@@ -54,7 +53,7 @@ public class Photograph {
 	 */
 	public void paint(Graphics g) {
 		if (image != null) {
-			g.drawImage((Image)image, margin, margin, this.width, this.height, something);
+			g.drawImage((Image)image, margin, margin, this.width, this.height, null);
 		}
 	}
 
