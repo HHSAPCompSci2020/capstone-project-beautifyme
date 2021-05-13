@@ -16,7 +16,7 @@ import java.awt.Color;
  * @version 2.0 on 5/13
  * @since 1.0
  */
-public class Photograph extends Canvas {
+public class Photograph extends Canvas { //weird class to use 
 	// FIELDS
 	private BufferedImage image;
 	private Pixel pixels;

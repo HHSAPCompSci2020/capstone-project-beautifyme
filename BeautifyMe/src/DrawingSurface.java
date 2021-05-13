@@ -41,10 +41,18 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
 	private BufferedImage Image1;
 	private Photograph Canvas1;
-	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+	private FileDialog fd;
 	private Photograph board;
 	private MagicWand wand;
 	
+	//try to limit Swing components; processing world 
+	//use Swing: JFileChooser
+	//Option A: delete all PApplet stuff, use JFrame and JPanel, paint component 
+	//Option B: still have JFrame pop-ups (main method (P-applet, more processing style, draw method, draw the image on window,
+	//click window = mouse pressed ), pop-up window can be swing) 
+	//drawingsurface = processing, instead of jbuttons have rectangles and when you click in rectangle do something! 
+	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
+	//on rectangle make 
 	private PImage wandCursor;
 	
 	/**
@@ -64,7 +72,8 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 		Canvas1 = new Photograph(null);
 		Canvas1.setSize(WIDTH, HEIGHT);
 		fr.add(Canvas1);
-		fr.show();
+		fr.setVisible(true);
+		fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 	}
 	
 	/**
@@ -80,7 +89,7 @@ public class DrawingSurface extends PApplet  implements ActionListener{
 	 */
 	public void imageload() throws IOException {
 	
-		fd.show();
+		fd.setVisible(true);
 		if (fd.getFile() == null) {
 			Label1.setText("You have not selected");
 		} else{
