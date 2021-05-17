@@ -42,8 +42,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private Photograph photograph;
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 	private MagicWand wand;
-	private Container c;
-	
+
 	//try to limit Swing components; processing world 
 	//use Swing: JFileChooser
 	//Option A: delete all PApplet stuff, use JFrame and JPanel, paint component 
@@ -59,22 +58,21 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	 */
 	public DrawingSurface() {
 		fr.setSize(WIDTH, HEIGHT);
-		fr.setLocation(50, 50);
-		this.setBackground(Color.lightGray);
-		// fr.setLayout(new FlowLayout());
-		
+		fr.setLocation(0, 0);
+		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fr.add(this);
 
+		this.setBackground(Color.lightGray);
 		this.setLayout(new FlowLayout());
-		
 		this.add(Label1);
 		this.add(Button1);
 		this.add(Button2);
 		
-		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Button1.addActionListener(this);
 		Button2.addActionListener(this);
+		
 		photograph = new Photograph(null);
+		
 		fr.setVisible(true);
 	}
 	
