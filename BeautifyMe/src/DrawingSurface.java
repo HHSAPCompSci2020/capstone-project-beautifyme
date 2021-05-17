@@ -28,6 +28,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class DrawingSurface extends JPanel implements MouseListener, ActionListener{
@@ -36,7 +37,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private JFrame fr = new JFrame("Image loading"); //somehow put the Jframe in main! 
 	
 	
-	private Label Label1 = new Label("Choose your image");
+	private JLabel Label1 = new JLabel("Choose an image (jpeg or png) from your computer that you would like to edit the blemishes of. Selfies work best!");
 	private JButton Button1 = new JButton("select");
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
 	private BufferedImage Image1;
