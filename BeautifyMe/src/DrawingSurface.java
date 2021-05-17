@@ -7,14 +7,15 @@
 
 import java.awt.Button;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Label;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -23,11 +24,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import processing.core.PApplet;
-import processing.core.PImage;
-
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,16 +39,24 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private Label Label1 = new Label("Choose your image");
 	private JButton Button1 = new JButton("select");
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
-	private BufferedImage Image1;
 	private Photograph Canvas1;
 	private FileDialog fd;
-	private Photograph board;
 	private MagicWand wand;
 	
 
 	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
 	//on rectangle make 
 	private BufferedImage wandCursor;
+	private Photograph photograph;
+
+	//try to limit Swing components; processing world 
+	//use Swing: JFileChooser
+	//Option A: delete all PApplet stuff, use JFrame and JPanel, paint component 
+	//Option B: still have JFrame pop-ups (main method (P-applet, more processing style, draw method, draw the image on window,
+	//click window = mouse pressed ), pop-up window can be swing) 
+	//drawingsurface = processing, instead of jbuttons have rectangles and when you click in rectangle do something! 
+	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
+	//on rectangle make 
 	
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates buttons and an image
@@ -59,18 +64,21 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	public DrawingSurface() {
 		super();
 		fr.setSize(WIDTH, HEIGHT);
-		fr.setLocation(50, 50);
-		fr.setBackground(Color.lightGray);
-		fr.setLayout(new FlowLayout());
-		fr.add(Label1);
-		fr.add(Button1);
-		fr.add(Button2);
+		fr.setLocation(0, 0);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fr.add(this);
+
+		this.setBackground(Color.lightGray);
+		this.setLayout(new FlowLayout());
+		this.add(Label1);
+		this.add(Button1);
+		this.add(Button2);
+		
 		Button1.addActionListener(this);
 		Button2.addActionListener(this);
+		
 		Canvas1 = new Photograph(null);
-		fr.setVisible(true);
-		fr.setResizable(true);
+		
 		fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 
 		try {
@@ -80,7 +88,10 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		photograph = new Photograph(null);
 		
+		fr.setVisible(true);
+		fr.setResizable(true);
 	}
 	
 	/**
@@ -90,18 +101,15 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	public void imageload() throws IOException {
 	
 		fd.setVisible(true);
-		if (fd.getFile() == null) {
-			Label1.setText("You have not selected");
-		} else{
-			File[] file = fd.getFiles();
-			Image1 = ImageIO.read(file[0]);
-			Canvas1.setImage(Image1);
-			repaint();
-		}
+		File[] file = fd.getFiles();
+		Image1 = ImageIO.read(file[0]);
+		photograph.setImage(Image1);
+		repaint();
 	}
 	
 	public void paintComponent(Graphics g) {
-       Canvas1.paint(g);
+		super.paintComponent(g);
+		photograph.paint(g, this);
     }
 	
 	
