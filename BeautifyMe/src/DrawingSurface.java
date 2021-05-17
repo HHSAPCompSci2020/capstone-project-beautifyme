@@ -7,6 +7,7 @@
 
 import java.awt.Button;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
@@ -39,11 +40,15 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private JButton Button1 = new JButton("select");
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
 	private BufferedImage Image1;
-	private Photograph Canvas1;
-	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+	private FileDialog fd;
 	private MagicWand wand;
-	private Container c;
 	
+
+	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
+	//on rectangle make 
+	private BufferedImage wandCursor;
+	private Photograph photograph;
+
 	//try to limit Swing components; processing world 
 	//use Swing: JFileChooser
 	//Option A: delete all PApplet stuff, use JFrame and JPanel, paint component 
@@ -52,26 +57,40 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	//drawingsurface = processing, instead of jbuttons have rectangles and when you click in rectangle do something! 
 	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
 	//on rectangle make 
-	private Image wandCursor;
 	
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates buttons and an image
 	 */
 	public DrawingSurface() {
+		super();
 		fr.setSize(WIDTH, HEIGHT);
-		fr.setLocation(50, 50);
-		fr.setBackground(Color.lightGray);
-		fr.setLayout(new FlowLayout());
-		fr.add(Label1);
-		fr.add(Button1);
-		fr.add(Button2);
+		fr.setLocation(0, 0);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fr.add(this);
+
+		this.setBackground(Color.lightGray);
+		this.setLayout(new FlowLayout());
+		this.add(Label1);
+		this.add(Button1);
+		this.add(Button2);
+		
 		Button1.addActionListener(this);
 		Button2.addActionListener(this);
-		Canvas1 = new Photograph(null);
+		
+		fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+
+		try {
+			wandCursor = ImageIO.read(new File("img/wandcursor.png"));
+			System.out.println("hi");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		photograph = new Photograph(null);
+		
 		fr.setVisible(true);
-		c = fr.getContentPane();
-		c.add(this);
+		fr.setResizable(true);
 	}
 	
 	/**
@@ -83,12 +102,13 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		fd.setVisible(true);
 		File[] file = fd.getFiles();
 		Image1 = ImageIO.read(file[0]);
-		Canvas1.setImage(Image1);
+		photograph.setImage(Image1);
 		repaint();
 	}
 	
 	public void paintComponent(Graphics g) {
-		Canvas1.paint(g);
+		super.paintComponent(g);
+		photograph.paint(g, this);
     }
 	
 	
@@ -118,7 +138,9 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 			}
 		}
 		else if(b == Button2) {
-			//cursor(wandCursor);
+			Toolkit toolkit = Toolkit.getDefaultToolkit();
+			Cursor c = toolkit.createCustomCursor(wandCursor , new Point(16, 16), "img");
+			setCursor(c);
 			}
 	}
 
