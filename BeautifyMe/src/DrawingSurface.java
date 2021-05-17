@@ -60,13 +60,17 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	public DrawingSurface() {
 		fr.setSize(WIDTH, HEIGHT);
 		fr.setLocation(50, 50);
-		fr.setBackground(Color.lightGray);
-		fr.setLayout(new FlowLayout());
-		c = fr.getContentPane();
-		c.add(this);
-		fr.add(Label1);
-		fr.add(Button1);
-		fr.add(Button2);
+		this.setBackground(Color.lightGray);
+		// fr.setLayout(new FlowLayout());
+		
+		fr.add(this);
+
+		this.setLayout(new FlowLayout());
+		
+		this.add(Label1);
+		this.add(Button1);
+		this.add(Button2);
+		
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Button1.addActionListener(this);
 		Button2.addActionListener(this);
@@ -88,6 +92,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	}
 	
 	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		photograph.paint(g, this);
     }
 	
