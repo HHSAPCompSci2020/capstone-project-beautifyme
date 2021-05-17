@@ -44,24 +44,20 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
 	private BufferedImage Image1;
 	private Photograph Canvas1;
-	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+	private FileDialog fd;
 	private Photograph board;
 	private MagicWand wand;
 	
-	//try to limit Swing components; processing world 
-	//use Swing: JFileChooser
-	//Option A: delete all PApplet stuff, use JFrame and JPanel, paint component 
-	//Option B: still have JFrame pop-ups (main method (P-applet, more processing style, draw method, draw the image on window,
-	//click window = mouse pressed ), pop-up window can be swing) 
-	//drawingsurface = processing, instead of jbuttons have rectangles and when you click in rectangle do something! 
+
 	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
 	//on rectangle make 
-	private PImage wandCursor;
+	private BufferedImage wandCursor;
 	
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates buttons and an image
 	 */
 	public DrawingSurface() {
+		super();
 		fr.setSize(WIDTH, HEIGHT);
 		fr.setLocation(50, 50);
 		fr.setBackground(Color.lightGray);
@@ -74,6 +70,16 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		Button2.addActionListener(this);
 		Canvas1 = new Photograph(null);
 		fr.setVisible(true);
+		fr.setResizable(true);
+		fd = new FileDialog(fr, "Open", FileDialog.LOAD);
+
+		try {
+			wandCursor = ImageIO.read(new File("img/wandcursor.png"));
+			System.out.println("hi");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -125,7 +131,9 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 			}
 		}
 		else if(b == Button2) {
-			//cursor(wandCursor);
+			Toolkit toolkit = Toolkit.getDefaultToolkit();
+			Cursor c = toolkit.createCustomCursor(wandCursor , new Point(16, 16), "img");
+			setCursor(c);
 			}
 	}
 
