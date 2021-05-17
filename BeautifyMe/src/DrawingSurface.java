@@ -39,7 +39,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private Label Label1 = new Label("Choose your image");
 	private JButton Button1 = new JButton("select");
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
-	private Photograph Canvas1;
+	private BufferedImage Image1;
 	private FileDialog fd;
 	private MagicWand wand;
 	
@@ -77,8 +77,6 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		Button1.addActionListener(this);
 		Button2.addActionListener(this);
 		
-		Canvas1 = new Photograph(null);
-		
 		fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 
 		try {
@@ -88,6 +86,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		photograph = new Photograph(null);
 		
 		fr.setVisible(true);
