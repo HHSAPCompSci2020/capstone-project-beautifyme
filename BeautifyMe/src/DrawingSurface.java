@@ -8,6 +8,7 @@
 import java.awt.Button;
 import java.awt.Point;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
@@ -41,6 +42,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private Photograph Canvas1;
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 	private MagicWand wand;
+	private Container c;
 	
 	//try to limit Swing components; processing world 
 	//use Swing: JFileChooser
@@ -68,7 +70,8 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		Button2.addActionListener(this);
 		Canvas1 = new Photograph(null);
 		fr.setVisible(true);
-		
+		c = fr.getContentPane();
+		c.add(this);
 	}
 	
 	/**
@@ -85,7 +88,6 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	}
 	
 	public void paintComponent(Graphics g) {
-		System.out.println("1");
 		Canvas1.paint(g);
     }
 	

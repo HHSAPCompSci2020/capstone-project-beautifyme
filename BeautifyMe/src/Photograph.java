@@ -52,8 +52,8 @@ public class Photograph {
 	 * @param g Graphics object to draw with
 	 */
 	public void paint(Graphics g) {
-		System.out.println("2");
 		if (image != null) {
+			System.out.println("0");
 			g.drawImage(image, margin, margin, this.width, this.height, null);
 		}
 	}
