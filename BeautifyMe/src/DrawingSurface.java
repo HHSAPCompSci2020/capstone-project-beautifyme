@@ -44,20 +44,9 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private MagicWand wand;
 	
 
-	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
-	//on rectangle make 
 	private BufferedImage wandCursor;
 	private Photograph photograph;
 
-	//try to limit Swing components; processing world 
-	//use Swing: JFileChooser
-	//Option A: delete all PApplet stuff, use JFrame and JPanel, paint component 
-	//Option B: still have JFrame pop-ups (main method (P-applet, more processing style, draw method, draw the image on window,
-	//click window = mouse pressed ), pop-up window can be swing) 
-	//drawingsurface = processing, instead of jbuttons have rectangles and when you click in rectangle do something! 
-	//jfilechooser (info online about that) --> processing window, draw same things in our window now, rectangle has magicwand window, when press
-	//on rectangle make 
-	
 	/**
 	 *Initializes a Drawing Surface with a 500 by 500 size and creates buttons and an image
 	 */
