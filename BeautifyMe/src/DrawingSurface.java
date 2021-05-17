@@ -39,7 +39,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private JButton Button1 = new JButton("select");
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
 	private BufferedImage Image1;
-	private Photograph Canvas1;
+	private Photograph photograph;
 	private FileDialog fd = new FileDialog(fr, "Open", FileDialog.LOAD);
 	private MagicWand wand;
 	private Container c;
@@ -62,16 +62,16 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		fr.setLocation(50, 50);
 		fr.setBackground(Color.lightGray);
 		fr.setLayout(new FlowLayout());
+		c = fr.getContentPane();
+		c.add(this);
 		fr.add(Label1);
 		fr.add(Button1);
 		fr.add(Button2);
 		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Button1.addActionListener(this);
 		Button2.addActionListener(this);
-		Canvas1 = new Photograph(null);
+		photograph = new Photograph(null);
 		fr.setVisible(true);
-		c = fr.getContentPane();
-		c.add(this);
 	}
 	
 	/**
@@ -83,12 +83,12 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		fd.setVisible(true);
 		File[] file = fd.getFiles();
 		Image1 = ImageIO.read(file[0]);
-		Canvas1.setImage(Image1);
+		photograph.setImage(Image1);
 		repaint();
 	}
 	
 	public void paintComponent(Graphics g) {
-		Canvas1.paint(g);
+		photograph.paint(g, this);
     }
 	
 	
