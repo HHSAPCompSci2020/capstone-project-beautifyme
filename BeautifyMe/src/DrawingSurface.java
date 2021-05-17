@@ -78,18 +78,15 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	public void imageload() throws IOException {
 	
 		fd.setVisible(true);
-		if (fd.getFile() == null) {
-			Label1.setText("You have not selected");
-		} else{
-			File[] file = fd.getFiles();
-			Image1 = ImageIO.read(file[0]);
-			Canvas1.setImage(Image1);
-			repaint();
-		}
+		File[] file = fd.getFiles();
+		Image1 = ImageIO.read(file[0]);
+		Canvas1.setImage(Image1);
+		repaint();
 	}
 	
 	public void paintComponent(Graphics g) {
-       Canvas1.paint(g);
+		System.out.println("1");
+		Canvas1.paint(g);
     }
 	
 	
