@@ -13,6 +13,7 @@ public class MagicWand {
 
 	/**
 	 * Initializes a MagicWand for a photograph
+	 * 
 	 * @param photo Photograph that the user uploaded
 	 */
 	public MagicWand(Photograph photo) {
@@ -34,33 +35,34 @@ public class MagicWand {
 	 */
 
 	public void edit(int x, int y) {
-		x = x - 50;
-		y = y - 50;
 		int red = 0;
 		int green = 0;
 		int blue = 0;
-		int count=0;
+		int count = 0;
 
 		for (int i = x - 7; i < x + 7; i++) {
-			if (x - 7 > 50 || x + 7 < 320) {
+			if (x - 7 > 50 && x + 7 < 320) {
 				for (int j = y - 7; j < y + 7; j++) {
-					if (y - 7 > 50 || y + 7 < 640) {
-						if (i == x || j == y) {
-							red = 0;
-							green = 0;
-							blue = 0;
-						}
+					if (y - 7 > 50 && y + 7 < 640) {
+						if (i != x || j != y) {
 
-						Color color = photo.getColor(i, j);
-						red = red + color.getRed();
-						green = green + color.getGreen();
-						blue = blue + color.getBlue();
-						count++;
+							Color color = photo.getColor(i, j);
+							red = red + color.getRed();
+							green = green + color.getGreen();
+							blue = blue + color.getBlue();
+							count++;
+						}
 					}
 				}
 			}
 		}
-		photo.setColor(x, y, new Color(red / count, green / count, blue / count));
+
+		photo.setColor(x - 1, y, new Color(red / count, green / count, blue / count));
+		photo.setColor(x + 1, y, new Color(red / count, green / count, blue / count));
+		photo.setColor(x, y - 1, new Color(red / count, green / count, blue / count));
+		photo.setColor(x, y + 1, new Color(red / count, green / count, blue / count));
+		photo.setColor(x, y , new Color(red / count, green / count, blue / count));
+		
 	}
 
 }
