@@ -71,7 +71,6 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 
 		try {
 			wandCursor = ImageIO.read(new File("img/wandcursor.png"));
-			System.out.println("hi");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -123,11 +122,13 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		if (b == Button1) {
 			try {
 				imageload();
+				Label1.setText("You have selected an image to edit. Start by pressing on the magic wand button to start editing the blemishes in your photo."); 
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
+				}
 		}
 		else if(b == Button2) {
+			Label1.setText("Using the magic wand tool, press on the area of the face where you would like to edit your blemish."); 
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
 			Cursor c = toolkit.createCustomCursor(wandCursor , new Point(16, 16), "img");
 			setCursor(c);
