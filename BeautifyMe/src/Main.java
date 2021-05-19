@@ -1,7 +1,7 @@
 /**
  * This class represents the main method that will run the DrawingSurface.
  * @author Sarah Sabaa
- * @version 1.0 on 5/6
+ * @version 2.0 on 5/19
  * @since 1.0 
  */
 
@@ -23,7 +23,7 @@ public class Main {
 	
 	/**
 	 *Creates the drawing surface and runs the whole program
-	 *Hopefully in the future this class will contain the JFrame 
+	 *
 	 *@param args[] String with arguments
 	 */
 	public static void main(String args[]) {

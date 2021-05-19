@@ -1,7 +1,7 @@
 /**
- * This class represents a DrawingSurface that contains the Photograph and buttons.
- * @author Sarah Sabaa and Mira Shlimenzon
- * @version 2.0 on 5/13
+ * This class represents a DrawingSurface that contains the Photograph, buttons, and MagicWand.
+ * @author Sarah Sabaa and Mira Shlimenzon (code for cursor inspired by SimpleWindow Shelby lab)
+ * @version 3.0 on 5/19
  * @since 1.0
  */
 
@@ -43,13 +43,13 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private BufferedImage Image1;
 	private FileDialog fd;
 	private MagicWand wand;
-	
+	private boolean magicButtonPressed;
 
 	private BufferedImage wandCursor;
 	private Photograph photograph;
 
 	/**
-	 *Initializes a Drawing Surface with a 500 by 500 size and creates buttons and an image
+	 *Initializes a Drawing Surface with a 500 by 500 size. Creates buttons and textbox. Also, creates wand cursor image.
 	 */
 	public DrawingSurface() {
 		super();
@@ -80,10 +80,12 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		
 		fr.setVisible(true);
 		fr.setResizable(true);
+		magicButtonPressed = false;
 	}
 	
 	/**
-	 *Loads an image to the Drawing Surface
+	 *Loads the photograph image (selfie) to the Drawing Surface
+	 *
 	 * @throws IOException 
 	 */
 	public void imageload() throws IOException {
@@ -94,7 +96,11 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		photograph.setImage(Image1);
 		repaint();
 	}
-	
+	/**
+	 *Drawing the photograph that the user has selected 
+	 *
+	 * @param g Graphics panel that will be used to paint 
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		photograph.paint(g, this);
@@ -102,24 +108,30 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	
 	
 	/**
-	 *Mouse is pressed within the grid, and the user can edit the pixel that the mouse is pressing on
+	 *When the mouse is pressed within the grid and the user has just pressed on the magic Wand Button,
+	 *the user can edit the pixel that the mouse has selected using the magic wand tool.
 	 *
+	 *@param e Event that the user has done with their mouse 
 	 */
 	public void mousePressed(MouseEvent e) {
-		
+		if(magicButtonPressed )
 		wand.edit(e.getX(), e.getY());
 
 	}
 	
 	/**
-	 *Loads the image when the upload button is pushed
-	 *Changes the cursor when the magic wand button is pushed
-	 * 
+	 *When the user presses on the upload button, uploads the selfie they selected.
+	 *When the user presses on the magic wand button, it changes the cursor into a magic wand and allows the user to edit the image.
+	 *As well, the text box/label is uploaded with directions for the user every single time the user presses on each button.
+	 *
 	 *@param event Event that has happened when the button is pressed  
 	 */
 	public void actionPerformed(ActionEvent event) {
 		JButton b = (JButton) event.getSource();
 		if (b == Button1) {
+			magicButtonPressed = false;
+			Cursor c = Cursor.getDefaultCursor();
+			setCursor (c);
 			try {
 				imageload();
 				Label1.setText("You have selected an image to edit. Start by pressing on the magic wand button to start editing the blemishes in your photo."); 
@@ -128,6 +140,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 				}
 		}
 		else if(b == Button2) {
+			magicButtonPressed = true;
 			Label1.setText("Using the magic wand tool, press on the area of the face where you would like to edit your blemish."); 
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
 			Cursor c = toolkit.createCustomCursor(wandCursor , new Point(16, 16), "img");

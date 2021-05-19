@@ -13,11 +13,11 @@ import java.awt.Color;
  * It allows the user to change and get the colors of pixels and upload a new image and get that image.
  * 
  * @author Mira Shlimenzon, Sarah Sabaa (image upload and scaling)
- * @version 2.0 on 5/13
+ * @version 3.0 on 5/19
  */
 
 public class Photograph {
-	// FIELDS
+	
 	private BufferedImage image;
 	private Pixel pixels;
 	private int width;
@@ -28,9 +28,10 @@ public class Photograph {
 	protected Pixel[][] grid;
 
 	/**
-	 * Initializes a Photograph with a certain image and a 2D array for pixels in the photograph
-	 * Sets width and height 
-	 * If image is too big, will scale the image down 
+	 * Initializes a Photograph with a certain image and a 2D grid array for Pixels in the photograph. 
+	 * If image chosen is null, then the 2D Pixel grid is null.
+	 * Sets width and height. 
+	 * If image is too big, will scale the image down. 
 	 * 
 	 * @param img BufferedImage that makes up the Photograph
 	 */
@@ -53,8 +54,6 @@ public class Photograph {
 	 */
 	public void paint(Graphics g, ImageObserver io) {
 		if (image != null) {
-			System.out.println(width);
-			System.out.println(height);
 			g.drawImage(image, margin, margin, this.width, this.height, io);
 		}
 	}
@@ -88,9 +87,9 @@ public class Photograph {
 	}
 
 	/**
-	 * Sets a new image for the Photograph, sets width and height, and creates 2D grid of Pixels
+	 * Sets a new image for the Photograph, sets width and height, and creates 2D grid of Pixels with the image's width and height
 	 * 
-	 * @param img a Image that will be the new image
+	 * @param img BufferedImage that will be the new image
 	 */
 	public void setImage(BufferedImage img) {
 		this.image = img;
@@ -154,37 +153,6 @@ public class Photograph {
 	 */
 	public Pixel getPixel(int x, int y) {
 		return grid[y][x];
-	}
-
-	/**
-	 * (Graphical UI) Determines which element of the grid matches with a particular
-	 * pixel coordinate. This supports interaction with the grid using mouse clicks
-	 * in the window.
-	 * 
-	 * @param p      A Point object containing a graphical pixel coordinate.
-	 * @param x      The x pixel coordinate of the upper left corner of the grid
-	 *               drawing.
-	 * @param y      The y pixel coordinate of the upper left corner of the grid
-	 *               drawing.
-	 * @param width  The pixel width of the grid drawing.
-	 * @param height The pixel height of the grid drawing.
-	 * @return A Point object representing a coordinate within the grid, or null if
-	 *         the pixel coordinate falls completely outside of the grid.
-	 */
-	public Point clickToIndex(Point p, float x, float y, float width, float height) {
-		Point coordinates = null;
-		for (int row = 0; row < grid.length; row++) {
-			for (int col = 0; col < grid[0].length; col++) {
-				float rectWidth = width / grid[0].length;
-				float rectX = x + (rectWidth * col);
-				float rectHeight = height / grid.length;
-				float rectY = y + (rectHeight * row);
-
-				if (rectX + rectWidth > p.x && p.x > rectX && rectY + rectHeight > p.y && p.y > rectY)
-					coordinates = new Point(col, row);
-			}
-		}
-		return coordinates;
 	}
 
 }
