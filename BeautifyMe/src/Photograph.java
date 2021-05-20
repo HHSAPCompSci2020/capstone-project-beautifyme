@@ -65,7 +65,7 @@ public class Photograph {
 				g.setColor(grid[i][j].getColor());
 				int x = i + margin;
 				int y = j + margin;
-				g.drawLine(x, y, x, y);
+				g.drawLine(y, x, y, x);
 			}
 		}
 	}
@@ -119,7 +119,7 @@ public class Photograph {
 	public void setsColorForPixels() {
 			for (int i = 0; i < height; i++) {
 				for (int j = 0; j < width; j++) {
-					grid[i][j] = new Pixel(new Color(image.getRGB(i, j)));
+					grid[i][j] = new Pixel(new Color(image.getRGB(j, i)));
 			}
 		}
 
