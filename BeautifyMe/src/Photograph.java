@@ -53,8 +53,6 @@ public class Photograph {
 	 */
 	public void paint(Graphics g, ImageObserver io) {
 		if (image != null) {
-			System.out.println(width);
-			System.out.println(height);
 			g.drawImage(image, margin, margin, this.width, this.height, io);
 		}
 	}
