@@ -20,7 +20,6 @@ import java.awt.Color;
 public class Photograph {
 
 	private BufferedImage image;
-	private Pixel pixels;
 	private int width;
 	private int height;
 	public int margin = 50;
@@ -55,8 +54,19 @@ public class Photograph {
 	public void paint(Graphics g, ImageObserver io) {
 		if (image != null) {
 			// does not use the modified grid
-
-			g.drawImage(image, margin, margin, this.width, this.height, io);
+			drawUsingGrid(g);
+			//g.drawImage(image, margin, margin, this.width, this.height, io);
+		}
+	}
+	
+	private void drawUsingGrid(Graphics g) {
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				g.setColor(grid[i][j].getColor());
+				int x = i + margin;
+				int y = j + margin;
+				g.drawLine(x, y, x, y);
+			}
 		}
 	}
 

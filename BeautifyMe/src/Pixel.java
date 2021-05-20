@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import java.awt.Color;
 
 class Pixel {
-	Color color;
+	private Color color;
 
 	/**
 	 * Initializes a Pixel with a designated color part of a photograph
