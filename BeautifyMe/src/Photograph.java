@@ -54,7 +54,8 @@ public class Photograph {
 	 */
 	public void paint(Graphics g, ImageObserver io) {
 		if (image != null) {
-			//does not use the modified grid
+			// does not use the modified grid
+
 			g.drawImage(image, margin, margin, this.width, this.height, io);
 		}
 	}
@@ -133,7 +134,7 @@ public class Photograph {
 	 * @return Color color of the pixel at the location (x,y)
 	 */
 	public Color getColor(int x, int y) {
-		System.out.println("x: " + x + " y: " + y);
+
 		return grid[y][x].getColor();
 	}
 
