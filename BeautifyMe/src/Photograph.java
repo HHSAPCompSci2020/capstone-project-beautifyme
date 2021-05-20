@@ -10,14 +10,15 @@ import java.awt.Color;
 /**
  * This class represents a Photograph. It draws the image to the position of
  * (50,50). If the height and width is too large, it will scale the image down.
- * It allows the user to change and get the colors of pixels and upload a new image and get that image.
+ * It allows the user to change and get the colors of pixels and upload a new
+ * image and get that image.
  * 
  * @author Mira Shlimenzon, Sarah Sabaa (image upload and scaling)
  * @version 3.0 on 5/19
  */
 
 public class Photograph {
-	
+
 	private BufferedImage image;
 	private Pixel pixels;
 	private int width;
@@ -28,10 +29,9 @@ public class Photograph {
 	protected Pixel[][] grid;
 
 	/**
-	 * Initializes a Photograph with a certain image and a 2D grid array for Pixels in the photograph. 
-	 * If image chosen is null, then the 2D Pixel grid is null.
-	 * Sets width and height. 
-	 * If image is too big, will scale the image down. 
+	 * Initializes a Photograph with a certain image and a 2D grid array for Pixels
+	 * in the photograph. If image chosen is null, then the 2D Pixel grid is null.
+	 * Sets width and height. If image is too big, will scale the image down.
 	 * 
 	 * @param img BufferedImage that makes up the Photograph
 	 */
@@ -47,19 +47,20 @@ public class Photograph {
 	}
 
 	/**
-	 * Paints the image onto the DrawingSurface at coordinates (50,50) with 
-	 * either the image's real width and height or a scaled version of the image
+	 * Paints the image onto the DrawingSurface at coordinates (50,50) with either
+	 * the image's real width and height or a scaled version of the image
 	 * 
 	 * @param g Graphics object to draw with
 	 */
 	public void paint(Graphics g, ImageObserver io) {
 		if (image != null) {
+			//does not use the modified grid
 			g.drawImage(image, margin, margin, this.width, this.height, io);
 		}
 	}
 
 	/**
-	 * Scales the image down so to not go over the max width and height 
+	 * Scales the image down so to not go over the max width and height
 	 */
 	private void scale() {
 		while (width > MAX_WIDTH || height > MAX_HEIGHT) {
@@ -69,25 +70,26 @@ public class Photograph {
 	}
 
 	/**
-	 * Gets the width of the image 
+	 * Gets the width of the image
 	 * 
-	 * @return width Width of the image 
+	 * @return width Width of the image
 	 */
 	public int getWidth() {
 		return width;
 	}
 
 	/**
-	 * Gets the height of the image 
+	 * Gets the height of the image
 	 * 
-	 * @return height Height of the image 
+	 * @return height Height of the image
 	 */
 	public int getHeight() {
 		return height;
 	}
 
 	/**
-	 * Sets a new image for the Photograph, sets width and height, and creates 2D grid of Pixels with the image's width and height
+	 * Sets a new image for the Photograph, sets width and height, and creates 2D
+	 * grid of Pixels with the image's width and height
 	 * 
 	 * @param img BufferedImage that will be the new image
 	 */
@@ -97,15 +99,16 @@ public class Photograph {
 		this.height = image.getHeight();
 		scale();
 		grid = new Pixel[height][width];
+		setsColorForPixels();
 	}
 
 	/**
-	 * Fills the 2D Array of Pixels with pixels of their designated color 
+	 * Fills the 2D Array of Pixels with pixels of their designated color
 	 */
 	public void setsColorForPixels() {
 		if (image != null) {
-			for (int i = 0; i < height; i++) {
-				for (int j = 0; j < width; j++) {
+			for (int i = 0; i < width; i++) {
+				for (int j = 0; j < height; j++) {
 					grid[j][i] = new Pixel(new Color(image.getRGB(j, i)));
 				}
 			}
@@ -130,6 +133,7 @@ public class Photograph {
 	 * @return Color color of the pixel at the location (x,y)
 	 */
 	public Color getColor(int x, int y) {
+		System.out.println("x: " + x + " y: " + y);
 		return grid[y][x].getColor();
 	}
 

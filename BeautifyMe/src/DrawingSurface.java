@@ -44,7 +44,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private BufferedImage Image1;
 	private FileDialog fd;
 	private MagicWand wand;
-
+	private boolean magicWandPressed;
 	private BufferedImage wandCursor;
 	private Photograph photograph;
 
@@ -82,6 +82,8 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 		fr.setVisible(true);
 		fr.setResizable(true);
 		fr.addMouseListener(this);
+		magicWandPressed = false;
+		wand = new MagicWand(photograph);
 	}
 
 	/**
@@ -109,9 +111,12 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	 *
 	 */
 	public void mousePressed(MouseEvent e) {
-		
 
-		wand.edit(e.getX(), e.getY());
+		if (magicWandPressed) {
+			System.out.println("x: " + e.getX() + "y: " + e.getY());
+			wand.edit((int) e.getX(), (int) e.getY());
+			repaint();
+		}
 	}
 
 	/**
@@ -123,6 +128,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	public void actionPerformed(ActionEvent event) {
 		JButton b = (JButton) event.getSource();
 		if (b == Button1) {
+			magicWandPressed = false;
 			try {
 				imageload();
 				Label1.setText(
@@ -131,6 +137,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 				e.printStackTrace();
 			}
 		} else if (b == Button2) {
+			magicWandPressed = true;
 			Label1.setText(
 					"Using the magic wand tool, press on the area of the face where you would like to edit your blemish.");
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
