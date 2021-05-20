@@ -57,7 +57,6 @@ public class MagicWand {
 		}
 
 		if (count > 0) {
-			System.out.println("Height = " + photo.getHeight() + " Width = " + photo.getWidth());
 			photo.setColor(x, y, new Color(red / count, green / count, blue / count));
 		}
 
