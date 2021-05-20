@@ -57,7 +57,8 @@ public class MagicWand {
 		}
 
 		if (count > 0) {
-			photo.setColor(x, y, new Color(red / count, green / count, blue / count));
+			System.out.println("red: " + red / count);
+			photo.setColor(y, x, new Color(red / count, green / count, blue / count));
 		}
 
 	}
