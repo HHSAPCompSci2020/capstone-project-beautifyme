@@ -106,7 +106,7 @@ public class Photograph {
 		if (image != null) {
 			for (int i = 0; i < height; i++) {
 				for (int j = 0; j < width; j++) {
-					grid[j][i] = new Pixel(new Color(image.getRGB(j, i)));
+					grid[i][j] = new Pixel(new Color(image.getRGB(i, j)));
 				}
 			}
 		}
