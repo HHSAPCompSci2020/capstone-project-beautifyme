@@ -107,11 +107,9 @@ public class Photograph {
 	 * Fills the 2D Array of Pixels with pixels of their designated color
 	 */
 	public void setsColorForPixels() {
-		if (image != null) {
-			for (int i = 0; i < width; i++) {
-				for (int j = 0; j < height; j++) {
-					grid[j][i] = new Pixel(new Color(image.getRGB(j, i)));
-				}
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
+					grid[i][j] = new Pixel(new Color(image.getRGB(i, j)));
 			}
 		}
 
