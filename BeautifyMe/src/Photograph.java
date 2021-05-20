@@ -1,8 +1,10 @@
+import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.awt.Color;
@@ -60,6 +62,7 @@ public class Photograph {
 	}
 	
 	private void drawUsingGrid(Graphics g) {
+		//g.setStroke(new BasicStroke(2f));
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				g.setColor(grid[i][j].getColor());
@@ -108,7 +111,7 @@ public class Photograph {
 		this.image = img;
 		this.width = image.getWidth();
 		this.height = image.getHeight();
-		scale();
+		//scale();
 		grid = new Pixel[height][width];
 		setsColorForPixels();
 	}
