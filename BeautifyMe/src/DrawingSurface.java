@@ -15,6 +15,7 @@ import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.event.ActionEvent;

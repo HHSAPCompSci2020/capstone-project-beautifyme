@@ -1,13 +1,10 @@
-import java.awt.BasicStroke;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Point;
-import java.awt.Stroke;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
-import java.awt.Color;
 
 /**
  * This class represents a Photograph. It draws the image to the position of
@@ -16,6 +13,7 @@ import java.awt.Color;
  * image and get that image.
  * 
  * @author Mira Shlimenzon, Sarah Sabaa (image upload and scaling)
+ * 
  * @version 3.0 on 5/19
  */
 
@@ -81,8 +79,14 @@ public class Photograph {
 			width = (int) ((double) width * 0.99);
 			height = (int) ((double) height * 0.99);
 		}
+		
+		Image tmp = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = resized.createGraphics();
+        g.drawImage(tmp, 0, 0, null);
+        g.dispose();
+        image = resized;	
 	}
-
 	/**
 	 * Gets the width of the image
 	 * 
@@ -111,7 +115,7 @@ public class Photograph {
 		this.image = img;
 		this.width = image.getWidth();
 		this.height = image.getHeight();
-		//scale();
+		scale();
 		grid = new Pixel[height][width];
 		setsColorForPixels();
 	}
@@ -125,7 +129,6 @@ public class Photograph {
 					grid[i][j] = new Pixel(new Color(image.getRGB(j, i)));
 			}
 		}
-
 	}
 
 	/**
