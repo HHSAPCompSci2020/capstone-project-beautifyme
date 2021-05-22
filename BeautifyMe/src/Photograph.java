@@ -1,8 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
@@ -23,8 +20,8 @@ public class Photograph {
 	private int width;
 	private int height;
 	public int margin = 50;
-	private final int MAX_WIDTH = 320;
-	private final int MAX_HEIGHT = 640;
+	//private final int MAX_WIDTH = 320;
+	//private final int MAX_HEIGHT = 640;
 	protected Pixel[][] grid;
 
 	/**
@@ -39,7 +36,7 @@ public class Photograph {
 		if (image != null) {
 			this.width = image.getWidth();
 			this.height = image.getHeight();
-			scale();
+			//scale();
 			grid = new Pixel[height][width];
 		} else
 			grid = null;
@@ -75,17 +72,20 @@ public class Photograph {
 	 * Scales the image down so to not go over the max width and height
 	 */
 	private void scale() {
-		while (width > MAX_WIDTH || height > MAX_HEIGHT) {
+		/*while (width > MAX_WIDTH || height > MAX_HEIGHT) {
 			width = (int) ((double) width * 0.99);
 			height = (int) ((double) height * 0.99);
-		}
+		}*/
 		
+		
+		/*
 		Image tmp = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = resized.createGraphics();
         g.drawImage(tmp, 0, 0, null);
         g.dispose();
-        image = resized;	
+       	image = resized;
+       	*/	
 	}
 	/**
 	 * Gets the width of the image
@@ -115,7 +115,7 @@ public class Photograph {
 		this.image = img;
 		this.width = image.getWidth();
 		this.height = image.getHeight();
-		scale();
+		//scale();
 		grid = new Pixel[height][width];
 		setsColorForPixels();
 	}
