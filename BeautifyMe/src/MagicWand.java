@@ -39,7 +39,7 @@ public class MagicWand {
 		int blue = 0;
 		int green = 0;
 		int count = 0;
-
+		
 		for (int i = y - 10; i < y + 10; i++) {
 			if (i > photo.margin && i < photo.getHeight()) {
 				for (int j = x - 10; j < x + 10; j++) {
@@ -55,7 +55,7 @@ public class MagicWand {
 				}
 			}
 		}
-
+		
 		if (count > 0) {
 			photo.setColor(x, y, new Color(red / count, green / count, blue / count));
 		}

@@ -5,7 +5,7 @@ import java.awt.image.ImageObserver;
 
 /**
  * This class represents a Photograph. It draws the image to the position of
- * (50,50). If the height and width is too large, it will scale the image down.
+ * (50,50).
  * It allows the user to change and get the colors of pixels and upload a new
  * image and get that image.
  * 
@@ -20,8 +20,6 @@ public class Photograph {
 	private int width;
 	private int height;
 	public final int margin = 50;
-	//private final int MAX_WIDTH = 320;
-	//private final int MAX_HEIGHT = 640;
 	protected Pixel[][] grid;
 
 	/**
@@ -36,7 +34,6 @@ public class Photograph {
 		if (image != null) {
 			this.width = image.getWidth();
 			this.height = image.getHeight();
-			//scale();
 			grid = new Pixel[height][width];
 		} else
 			grid = null;
@@ -50,14 +47,11 @@ public class Photograph {
 	 */
 	public void paint(Graphics g, ImageObserver io) {
 		if (image != null) {
-			// does not use the modified grid
 			drawUsingGrid(g);
-			//g.drawImage(image, margin, margin, this.width, this.height, io);
 		}
 	}
 	
 	private void drawUsingGrid(Graphics g) {
-		//g.setStroke(new BasicStroke(2f));
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				g.setColor(grid[i][j].getColor());
@@ -66,26 +60,6 @@ public class Photograph {
 				g.drawRect(x, y, 1, 1);
 			}
 		}
-	}
-
-	/**
-	 * Scales the image down so to not go over the max width and height
-	 */
-	private void scale() {
-		/*while (width > MAX_WIDTH || height > MAX_HEIGHT) {
-			width = (int) ((double) width * 0.99);
-			height = (int) ((double) height * 0.99);
-		}*/
-		
-		
-		/*
-		Image tmp = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g = resized.createGraphics();
-        g.drawImage(tmp, 0, 0, null);
-        g.dispose();
-       	image = resized;
-       	*/	
 	}
 	/**
 	 * Gets the width of the image
