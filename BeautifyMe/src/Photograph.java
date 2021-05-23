@@ -47,11 +47,18 @@ public class Photograph {
 	 */
 	public void paint(Graphics g, ImageObserver io) {
 		if (image != null) {
+
+
 			drawUsingGrid(g);
+
+
+			drawUsingGrid(g);
+
 		}
 	}
-	
+
 	private void drawUsingGrid(Graphics g) {
+
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				g.setColor(grid[i][j].getColor());
@@ -61,6 +68,7 @@ public class Photograph {
 			}
 		}
 	}
+
 	/**
 	 * Gets the width of the image
 	 * 
@@ -97,9 +105,9 @@ public class Photograph {
 	 * Fills the 2D Array of Pixels with pixels of their designated color
 	 */
 	public void setsColorForPixels() {
-			for (int i = 0; i < height; i++) {
-				for (int j = 0; j < width; j++) {
-					grid[i][j] = new Pixel(new Color(image.getRGB(j, i)));
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				grid[i][j] = new Pixel(new Color(image.getRGB(j, i)));
 			}
 		}
 	}
