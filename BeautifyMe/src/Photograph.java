@@ -5,7 +5,7 @@ import java.awt.image.ImageObserver;
 
 /**
  * This class represents a Photograph. It draws the image to the position of
- * (50,50). If the height and width is too large, it will scale the image down.
+ * (50,50).
  * It allows the user to change and get the colors of pixels and upload a new
  * image and get that image.
  * 
@@ -47,6 +47,10 @@ public class Photograph {
 	 */
 	public void paint(Graphics g, ImageObserver io) {
 		if (image != null) {
+
+
+			drawUsingGrid(g);
+
 
 			drawUsingGrid(g);
 
