@@ -58,8 +58,8 @@ public class MagicWand {
 					for (int j = x - 2; j < x + 2; j++) {
 						if (i>= 0 && i < photo.getHeight() && j>= 0 && j< photo.getWidth()) {
 							//photo.setColor(x + i, y + i, new Color(red / count, green / count, blue / count));
-							photo.setColor(i, j, new Color(0,0,0));
-							System.out.println(photo.getColor(i, j));
+							photo.setColor(j, i, new Color(0,0,0));
+							System.out.println(photo.getColor(j, i));
 						}
 				}
 			}
