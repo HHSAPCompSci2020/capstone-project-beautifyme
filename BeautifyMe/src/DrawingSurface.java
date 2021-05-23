@@ -15,6 +15,7 @@ import java.awt.Cursor;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
@@ -38,7 +39,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private JFrame fr = new JFrame("Image loading"); // somehow put the Jframe in main!
 
 	private JLabel Label1 = new JLabel(
-			"Choose an image (jpeg or png) from your computer that you would like to edit the blemishes of. Selfies work best!");
+			"Choose an image (jpeg or png) from your computer that you would like to edit the blemishes of. Max dimensions: 360x640");
 	private JButton Button1 = new JButton("select");
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
 	private BufferedImage Image1;
