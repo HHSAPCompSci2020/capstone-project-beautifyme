@@ -155,36 +155,5 @@ public class Photograph {
 	public Pixel getPixel(int x, int y) {
 		return grid[y][x];
 	}
-	
-	/**
-	 * (Graphical UI)
-	 * Determines which element of the grid matches with a particular pixel coordinate.
-	 * This supports interaction with the grid using mouse clicks in the window.
-	 * 
-	 * @param p A Point object containing a graphical pixel coordinate.
-	 * @param x The x pixel coordinate of the upper left corner of the grid drawing. 
-	 * @param y The y pixel coordinate of the upper left corner of the grid drawing.
-	 * @param width The pixel width of the grid drawing.
-	 * @param height The pixel height of the grid drawing.
-	 * @return A Point object representing a coordinate within the game of life grid.
-	 */
-	public Point clickToIndex(int x, int y) {
-		float cellWidth = width / grid[0].length;
-		float cellHeight = height / grid.length;
-		if (x >= 0 && x <= (grid.length * cellWidth) && y >= 0 && y <= (grid[0].length * cellHeight)) {
-			int gridCountX = (int) ((x - margin) / cellWidth);
-			int gridCountY = (int) ((y - margin) / cellHeight);
-			if (x != 0 && (x % cellWidth) == 0) {
-				gridCountX--;
-			}
-			if (y != 0 && (y % cellHeight) == 0) {
-				gridCountY--;
-			}
-			System.out.println(gridCountX + " " + gridCountY);
-			return new Point(gridCountX, gridCountY);
-		} else {
-			return null;
-		}
-	}
 
 }
