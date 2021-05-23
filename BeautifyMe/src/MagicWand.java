@@ -44,13 +44,13 @@ public class MagicWand {
 			if (i > photo.margin && i < photo.getHeight()) {
 				for (int j = x - 10; j < x + 10; j++) {
 					if (j > photo.margin && j < photo.getWidth()) {
-						if (!(i == x && j == y)) {
-							Color color = photo.getColor(j, i);
-							red = red + color.getRed();
-							green = green + color.getGreen();
-							blue = blue + color.getBlue();
-							count++;
-						}
+
+						Color color = photo.getColor(j, i);
+						red = red + color.getRed();
+						green = green + color.getGreen();
+						blue = blue + color.getBlue();
+						count++;
+
 					}
 				}
 			}
