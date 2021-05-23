@@ -35,34 +35,30 @@ public class MagicWand {
 	 */
 
 	public Photograph edit(int x, int y) {
-		x=x-photo.margin;
-		y=y-photo.margin;
 		int red = 0;
 		int blue = 0;
 		int green = 0;
 		int count = 0;
 		System.out.println(x + " " + y);
 		System.out.println(photo.getColor(x,y));
-		for (int i = y - 40; i < y + 40; i++) {
-			if (i > photo.margin && i < photo.getHeight()) {
+		for (int i = y - 10; i < y + 10; i++) {
+			if (i >= 0 && i < photo.getHeight()) {
 				for (int j = x - 10; j < x + 10; j++) {
-					if (j > photo.margin && j < photo.getWidth()) {
+					if (j >=0 && j < photo.getWidth()) {
 						Color color = photo.getColor(j, i);
-						red = red + color.getRed();
-						green = green + color.getGreen();
-						blue = blue + color.getBlue();
+						red += color.getRed();
+						green += color.getGreen();
+						blue += color.getBlue();
 						count++;
-
 					}
 				}
 			}
 		}
 		
 		if (count > 0) {
-			Color c = new Color(red / count, green / count, blue / count);
-			System.out.println(c.toString());
 			photo.setColor(x, y, new Color(red / count, green / count, blue / count));
 		}
+		photo.setColor(x,y,new Color(0,0,0));
 		System.out.println(photo.getColor(x,y));
 		return photo;
 
