@@ -114,8 +114,10 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	public void mousePressed(MouseEvent e) {
 
 		if (magicWandPressed) {
-			int x = e.getX() - photograph.margin-32;
-			int y = e.getY() - photograph.margin-10;
+			
+			int x = e.getX() - 61;
+			int y = e.getY() - 86;
+			System.out.println(e.getX() + " " + e.getY());
 			if(x >= 0 && x< photograph.getWidth() && y>=0 && y < photograph.getHeight()) {
 				photograph = wand.edit(x, y);
 				repaint();
