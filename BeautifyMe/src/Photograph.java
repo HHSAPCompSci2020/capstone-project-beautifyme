@@ -63,7 +63,7 @@ public class Photograph {
 				g.setColor(grid[i][j].getColor());
 				int y = i + margin;
 				int x = j + margin;
-				g.drawLine(x, y, x, y);
+				g.drawRect(x, y, 1, 1);
 			}
 		}
 	}
