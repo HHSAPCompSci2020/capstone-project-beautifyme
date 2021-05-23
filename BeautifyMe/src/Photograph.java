@@ -66,9 +66,9 @@ public class Photograph {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				g.setColor(grid[i][j].getColor());
-				int x = i + margin;
-				int y = j + margin;
-				g.drawLine(y, x, y, x);
+				int y = i + margin;
+				int x = j + margin;
+				g.drawLine(x, y, x, y);
 			}
 		}
 	}
@@ -111,7 +111,6 @@ public class Photograph {
 		this.image = img;
 		this.width = image.getWidth();
 		this.height = image.getHeight();
-		//scale();
 		grid = new Pixel[height][width];
 		setsColorForPixels();
 	}
