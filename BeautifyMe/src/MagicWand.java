@@ -40,10 +40,10 @@ public class MagicWand {
 		int green = 0;
 		int count = 0;
 
-		for (int i = x - 10; i < x + 10; i++) {
-			if (i > photo.margin && i < photo.getWidth()) {
-				for (int j = y - 10; j < y + 10; j++) {
-					if (j > photo.margin && j < photo.getHeight()) {
+		for (int i = y - 10; i < y + 10; i++) {
+			if (i > photo.margin && i < photo.getHeight()) {
+				for (int j = x - 10; j < x + 10; j++) {
+					if (j > photo.margin && j < photo.getWidth()) {
 						if (!(i == x && j == y)) {
 							Color color = photo.getColor(j, i);
 							red = red + color.getRed();
