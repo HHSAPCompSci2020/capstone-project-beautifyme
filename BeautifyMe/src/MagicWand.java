@@ -41,8 +41,9 @@ public class MagicWand {
 		int blue = 0;
 		int green = 0;
 		int count = 0;
-		
-		for (int i = y - 50; i < y + 50; i++) {
+		System.out.println(x + " " + y);
+		System.out.println(photo.getColor(x,y));
+		for (int i = y - 40; i < y + 40; i++) {
 			if (i > photo.margin && i < photo.getHeight()) {
 				for (int j = x - 10; j < x + 10; j++) {
 					if (j > photo.margin && j < photo.getWidth()) {
