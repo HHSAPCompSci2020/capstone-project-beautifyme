@@ -11,7 +11,7 @@ import java.awt.image.ImageObserver;
  * 
  * @author Mira Shlimenzon, Sarah Sabaa (image upload and scaling)
  * 
- * @version 3.0 on 5/19
+ * @version 3.0 on 5/23
  */
 
 public class Photograph {

@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
  * This class represents a MagicWand that can edit pixels.
  * 
  * @author Mana Nagampalli
- * @version 2.0 on 5/13
+ * @version 3.0 on 5/33
  * @since 1.0
  */
 public class MagicWand {

@@ -3,7 +3,7 @@
 * This class represents a single Pixel that is within a photograph
 * It allows the user to change the color of the pixel and get the color of the pixel.
 * @author Mana Nagampalli, Mira Shlimenzon, and JavaDip (for the basic idea of the Pixel)
-* @version 1.0 on 5/6
+* @version 3.0 on 5/23
 * @since 1.0 
 */
 import java.awt.*;

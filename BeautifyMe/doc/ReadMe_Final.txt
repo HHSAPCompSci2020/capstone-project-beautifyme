@@ -1,7 +1,7 @@
 ﻿AP Computer Science Final Project - README Template
 Beautify Me
 Authors: Mira Shlimenzon, Sarah Sabaa, Mana Nagampalli
-Revision: May 13, 2021
+Revision: May 23, 2021
 
 
 Introduction: 
