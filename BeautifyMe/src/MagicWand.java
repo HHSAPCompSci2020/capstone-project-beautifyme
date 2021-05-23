@@ -34,7 +34,7 @@ public class MagicWand {
 	 * @param y Y-coordinate of pixel
 	 */
 
-	public void edit(int x, int y) {
+	public Photograph edit(int x, int y) {
 		x=x-photo.margin;
 		y=y-photo.margin;
 		int red = 0;
@@ -42,7 +42,7 @@ public class MagicWand {
 		int green = 0;
 		int count = 0;
 		
-		for (int i = y - 10; i < y + 10; i++) {
+		for (int i = y - 50; i < y + 50; i++) {
 			if (i > photo.margin && i < photo.getHeight()) {
 				for (int j = x - 10; j < x + 10; j++) {
 					if (j > photo.margin && j < photo.getWidth()) {
@@ -62,6 +62,8 @@ public class MagicWand {
 			System.out.println(c.toString());
 			photo.setColor(x, y, new Color(red / count, green / count, blue / count));
 		}
+		System.out.println(photo.getColor(x,y));
+		return photo;
 
 	}
 
