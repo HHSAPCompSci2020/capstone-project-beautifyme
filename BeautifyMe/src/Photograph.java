@@ -19,7 +19,7 @@ public class Photograph {
 	private BufferedImage image;
 	private int width;
 	private int height;
-	public int margin = 50;
+	public final int margin = 50;
 	//private final int MAX_WIDTH = 320;
 	//private final int MAX_HEIGHT = 640;
 	protected Pixel[][] grid;
