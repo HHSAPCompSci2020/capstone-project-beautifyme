@@ -25,7 +25,7 @@ public class MagicWand {
 	/**
 	 * 
 	 * This method edits a pixel rgb value by giving it the average rgb value around
-	 * the pixel
+	 * the pixel and changes the rgb values around a 20 pixel radius
 	 * 
 	 * @param x represents the x pixel coordinate
 	 * @param y represents the y pixel coordinate This method edits a pixel's rgb
@@ -53,14 +53,24 @@ public class MagicWand {
 			}
 		}
 
+		Color c1 = photo.getColor(x - 6, y);
+		Color c2 = photo.getColor(x, y - 6);
+		Color c3 = photo.getColor(x + 6, y);
+		Color c4 = photo.getColor(x, y + 6);
+		int blendedRed = (c1.getRed() + c2.getRed() + c3.getRed() + c4.getRed());
+		int blendedBlue = (c1.getBlue() + c2.getBlue() + c3.getBlue() + c4.getBlue());
+		int blendedGreen = (c1.getGreen() + c2.getGreen() + c3.getGreen() + c4.getGreen());
+
 		if (count > 0) {
 			for (int i = y - 5; i < y + 5; i++) {
 				for (int j = x - 5; j < x + 5; j++) {
 					if (i >= 0 && i < photo.getHeight() && j >= 0 && j < photo.getWidth()) {
-						photo.setColor(j, i, new Color(red / count, green / count, blue / count));
+						photo.setColor(j, i, new Color(red + blendedRed / (count + 4),
+								green + blendedGreen / (count + 4), blue + blendedBlue / (count + 4)));
 					}
 				}
 			}
+
 		}
 
 		return photo;
