@@ -107,8 +107,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	}
 
 	/**
-	 * Mouse is pressed within the grid, and the user can edit the pixel that the
-	 * mouse is pressing on
+	 * Mouse is pressed within the grid, and the user can edit the pixel that the mouse is pressing on.
 	 *
 	 */
 	public void mousePressed(MouseEvent e) {

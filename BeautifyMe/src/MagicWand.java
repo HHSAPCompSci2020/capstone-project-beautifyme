@@ -20,7 +20,7 @@ public class MagicWand {
 		this.photo = photo;
 
 	}
-
+/// EDIT THE JAVADOC of this method
 	/**
 	 * 
 	 * This method edits a pixel rgb value by giving it the average rgb value around
