@@ -20,7 +20,7 @@ public class Photograph {
 	private BufferedImage image;
 	private int width;
 	private int height;
-	public final int margin = 100;
+	public final int margin = 50;
 	protected Pixel[][] grid;
 
 	/**

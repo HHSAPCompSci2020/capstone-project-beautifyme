@@ -117,8 +117,6 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 
 			int x = e.getX() - photograph.margin-11 ;
 			int y = e.getY() - photograph.margin-36;
-			System.out.print(" Taken X:"+ x + " Taken Y: " + y);
-			System.out.println("Max Y: "+ (photograph.getHeight()+photograph.margin-36) +" Max X: "+(photograph.getWidth()+photograph.margin-11));
 			if (x >= 0 && x < photograph.getWidth() && y >= 0 && y < photograph.getHeight()) {
 				photograph = wand.edit(x, y);
 				repaint();
