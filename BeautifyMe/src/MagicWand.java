@@ -33,6 +33,8 @@ public class MagicWand {
 	 * 
 	 * @param x X-coordinate of pixel
 	 * @param y Y-coordinate of pixel
+	 * 
+	 *@return photo New edited photograph
 	 */
 
 	public Photograph edit(int x, int y) {

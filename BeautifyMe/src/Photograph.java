@@ -45,8 +45,9 @@ public class Photograph {
 	 * the image's real width and height or a scaled version of the image
 	 * 
 	 * @param g Graphics object to draw with
+	 * @param io ImageObserver 
 	 */
-	public void paint(Graphics g, ImageObserver io) {
+	public void paint(Graphics g,  ImageObserver io) {
 		if (image != null) {
 
 			drawUsingGrid(g);
