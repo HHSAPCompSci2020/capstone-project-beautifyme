@@ -20,6 +20,7 @@ public class MagicWand {
 		this.photo = photo;
 
 	}
+
 /// EDIT THE JAVADOC of this method
 	/**
 	 * 
@@ -39,30 +40,29 @@ public class MagicWand {
 		int blue = 0;
 		int green = 0;
 		int count = 0;
-		System.out.println(x + " " + y);
-		System.out.println(photo.getColor(x, y));
-		for (int i = y - 5; i < y + 5; i++) {
-				for (int j = x - 5; j < x + 5; j++) {
-					if (i >= 0 && i < photo.getHeight() && j >= 0 && j < photo.getWidth()) {
-						Color color = photo.getColor(j, i);
-						red += color.getRed();
-						green += color.getGreen();
-						blue += color.getBlue();
-						count++;
+
+		for (int i = y - 20; i < y + 20; i++) {
+			for (int j = x - 20; j < x + 20; j++) {
+				if (i >= 0 && i < photo.getHeight() && j >= 0 && j < photo.getWidth()) {
+					Color color = photo.getColor(j, i);
+					red += color.getRed();
+					green += color.getGreen();
+					blue += color.getBlue();
+					count++;
 				}
 			}
 		}
 
 		if (count > 0) {
-			for (int i = y-3; i < y+3; i++) {
-					for (int j = x - 3; j < x + 3; j++) {
-						if (i>= 0 && i < photo.getHeight() && j>= 0 && j< photo.getWidth()) {
-							photo.setColor(j, i, new Color(red / count, green / count, blue / count));
-							//photo.setColor(j, i, new Color(0,0,0));
-						}
+			for (int i = y - 5; i < y + 5; i++) {
+				for (int j = x - 5; j < x + 5; j++) {
+					if (i >= 0 && i < photo.getHeight() && j >= 0 && j < photo.getWidth()) {
+						photo.setColor(j, i, new Color(red / count, green / count, blue / count));
+					}
 				}
 			}
 		}
+
 		return photo;
 
 	}

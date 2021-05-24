@@ -107,17 +107,20 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	}
 
 	/**
-	 * Mouse is pressed within the grid, and the user can edit the pixel that the mouse is pressing on.
+	 * Mouse is pressed within the grid, and the user can edit the pixel that the
+	 * mouse is pressing on.
 	 *
 	 */
 	public void mousePressed(MouseEvent e) {
 
 		if (magicWandPressed) {
-			
-			int x = e.getX() - 61;
-			int y = e.getY() - 86;
-			System.out.println(e.getX() + " " + e.getY());
-			if(x >= 0 && x< photograph.getWidth() && y>=0 && y < photograph.getHeight()) {
+
+			int x = e.getX() - photograph.margin-11 ;
+			int y = e.getY() - photograph.margin-36;
+			System.out.print("Given X: "+e.getX() + ", Given Y: " + e.getY());
+			System.out.print(" Taken X:"+ x + " Taken Y: " + y);
+			System.out.println("Max X: "+photograph.getHeight()+" Max Y: "+photograph.getWidth());
+			if (x >= 0 && x < photograph.getHeight() && y >= 0 && y < photograph.getWidth()) {
 				photograph = wand.edit(x, y);
 				repaint();
 			}

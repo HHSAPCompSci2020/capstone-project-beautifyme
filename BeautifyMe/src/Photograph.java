@@ -20,7 +20,7 @@ public class Photograph {
 	private BufferedImage image;
 	private int width;
 	private int height;
-	public final int margin = 50;
+	public final int margin = 100;
 	protected Pixel[][] grid;
 
 	/**
@@ -48,10 +48,6 @@ public class Photograph {
 	 */
 	public void paint(Graphics g, ImageObserver io) {
 		if (image != null) {
-
-
-			drawUsingGrid(g);
-
 
 			drawUsingGrid(g);
 
