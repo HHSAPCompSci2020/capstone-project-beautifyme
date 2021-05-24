@@ -39,7 +39,7 @@ public class DrawingSurface extends JPanel implements MouseListener, ActionListe
 	private JFrame fr = new JFrame("Image loading"); // somehow put the Jframe in main!
 
 	private JLabel Label1 = new JLabel(
-			"Choose an image (jpeg or png) from your computer that you would like to edit the blemishes of. Max dimensions: 360x640");
+			"Press on the select button to choose an image (jpeg or png) from your computer that you would like to edit.");
 	private JButton Button1 = new JButton("select");
 	private JButton Button2 = new JButton(new ImageIcon("img/magicbutton.png"));
 	private BufferedImage Image1;
