@@ -25,7 +25,7 @@ public class MagicWand {
 	/**
 	 * 
 	 * This method edits a pixel rgb value by giving it the average rgb value around
-	 * the pixel
+	 * the 20 pixel radius and assigning it to a 5 pixel radius around the given x and y pixel coordinates 
 	 * 
 	 * @param x represents the x pixel coordinate
 	 * @param y represents the y pixel coordinate This method edits a pixel's rgb
