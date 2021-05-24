@@ -74,3 +74,4 @@ Credits:
    * Drawing Surface- C# Corner Article “How to Upload Images in Java Applications” (helped with the image uploading from the person’s computer)  
    * Photograph and Drawing Surface- using the clicktoIndex method from Game Of Life project to edit and select a pixel in the grid 
    * Drawing Surface- using code from CustomCursorDemo (Shelby’s recourse) as help for changing the cursor in our project.
+   * Photographs that are being used in the program are from online sources. We do not own these photos and this program is not for commercial use, so we should not be sued for this.
